@@ -14,14 +14,22 @@
 # ==============================================================================
 from absl import app
 
+from odir_patients_to_tfrecord import GenerateTFRecord
 from odir_training_data_parser import DataParser
 
 
 def main(argv):
-    file = r'dataset\\ODIR-5K_Training_Annotations(Updated)_V2.xlsx'
+    # Path to the annotation data
+    file = r'dataset\ODIR-5K_Training_Annotations(Updated)_V2.xlsx'
+    # Produce all the patient information and store it in an dictionary
     parser = DataParser(file, 'Sheet1')
     patients = parser.generate_patients()
+    # Additional quality check, can be commented out
     parser.check_data_quality()
+    # Transform patients into TFRecord
+    images_path = r'C:\temp\ODIR-5K_Training_Dataset'
+    generator = GenerateTFRecord(images_path)
+    generator.patients_to_tfrecord(patients, 'images.tfrecord')
 
 
 if __name__ == '__main__':

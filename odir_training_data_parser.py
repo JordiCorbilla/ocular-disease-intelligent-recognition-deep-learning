@@ -136,12 +136,14 @@ class DataParser:
                 combined_vector = [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others]
                 difference, position = self.vector_differences(stored_vector, combined_vector)
                 if difference:
-                    print("  Difference :" + str(patient_id) + ": " + str(position))
-                    self.print_vector("dat", stored_vector)
-                    self.print_vector("gen",combined_vector)
+                    print("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
+                    print("                  [N,D,G,C,A,H,M,O]")
+                    self.print_vector("  from source", stored_vector)
+                    self.print_vector("  generated  ", combined_vector)
 
             elif left_eye is None and right_eye is not None:
-                print("Left fundus not found: " + left_fundus + " working with right fundus")
+                print("Left fundus not found: [" + left_fundus + "] as it has been discarded, working with *right* "
+                      "fundus only")
                 discarded_images = discarded_images + 1
                 stored_vector = right_eye.DiseaseVector
                 right_vector = right_eye.DiseaseVectorGenerated
@@ -158,12 +160,14 @@ class DataParser:
                 combined_vector = [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others]
                 difference, position = self.vector_differences(stored_vector, combined_vector)
                 if difference:
-                    print("  Difference :" + str(patient_id) + ": " + str(position))
-                    self.print_vector("dat", stored_vector)
-                    self.print_vector("gen",combined_vector)
+                    print("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
+                    print("                  [N,D,G,C,A,H,M,O]")
+                    self.print_vector("  from source", stored_vector)
+                    self.print_vector("  generated  ", combined_vector)
 
             elif left_eye is not None and right_eye is None:
-                print("Right fundus not found: " + right_fundus + " working with left fundus")
+                print("Right fundus not found: [" + right_fundus + "] as it has been discarded, working with *left* "
+                      "fundus only")
                 discarded_images = discarded_images + 1
                 stored_vector = left_eye.DiseaseVector
                 left_vector = left_eye.DiseaseVectorGenerated
@@ -180,19 +184,21 @@ class DataParser:
                 combined_vector = [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others]
                 difference, position = self.vector_differences(stored_vector, combined_vector)
                 if difference:
-                    print("  Difference :" + str(patient_id) + ": " + str(position))
-                    self.print_vector("dat", stored_vector)
-                    self.print_vector("gen",combined_vector)
+                    print("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
+                    print("                  [N,D,G,C,A,H,M,O]")
+                    self.print_vector("  from source", stored_vector)
+                    self.print_vector("  generated  ", combined_vector)
             else:
                 discarded_images = discarded_images + 2
-                print("Left and Right fundus not found: " + left_fundus + "," + right_fundus)
+                print("Left and Right fundus not found: [" + left_fundus + "],[" + right_fundus + "] as they have "
+                      "been discarded")
 
         print("Total discarded images: " + str(discarded_images))
         print("Total training images: " + str(len(self.Patients)))
 
     @staticmethod
     def print_vector(title, vector):
-        print(title + "    [" + str(vector[0]) + "," + str(vector[1]) + "," + str(vector[2]) + "," + str(vector[3]) +
+        print(title + ":    [" + str(vector[0]) + "," + str(vector[1]) + "," + str(vector[2]) + "," + str(vector[3]) +
               "," + str(vector[4]) + "," + str(vector[5]) + "," + str(vector[6]) + "," + str(vector[7]) + "]")
 
     @staticmethod
@@ -201,7 +207,8 @@ class DataParser:
         position = 0
         for i in range(len(left_vector)):
             match = match and left_vector[i] == right_vector[i]
-            if match is False and position == 0:
+            # Just output the first difference found
+            if not match and position == 0:
                 position = i
 
         return not match, position

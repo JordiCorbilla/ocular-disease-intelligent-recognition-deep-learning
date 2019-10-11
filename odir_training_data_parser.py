@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-
+import logging
 import pandas as pd
 import xlrd as x
 
@@ -26,6 +26,7 @@ from odir_rule_engine import RuleEngine
 
 class DataParser:
     def __init__(self, spreadsheet, sheet):
+        self.logger = logging.getLogger('odir')
         self.spreadsheet = spreadsheet
         self.sheet = pd.read_excel(self.spreadsheet, sheet_name=sheet)
         self.Patients = {}
@@ -136,14 +137,15 @@ class DataParser:
                 combined_vector = [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others]
                 difference, position = self.vector_differences(stored_vector, combined_vector)
                 if difference:
-                    print("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
-                    print("                  [N,D,G,C,A,H,M,O]")
+                    self.logger.debug("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
+                    self.logger.debug("                  [N,D,G,C,A,H,M,O]")
                     self.print_vector("  from source", stored_vector)
                     self.print_vector("  generated  ", combined_vector)
 
             elif left_eye is None and right_eye is not None:
-                print("Left fundus not found: [" + left_fundus + "] as it has been discarded, working with *right* "
-                      "fundus only")
+                self.logger.debug(
+                    "Left fundus not found: [" + left_fundus + "] as it has been discarded, working with *right* "
+                                                               "fundus only")
                 discarded_images = discarded_images + 1
                 stored_vector = right_eye.DiseaseVector
                 right_vector = right_eye.DiseaseVectorGenerated
@@ -160,14 +162,14 @@ class DataParser:
                 combined_vector = [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others]
                 difference, position = self.vector_differences(stored_vector, combined_vector)
                 if difference:
-                    print("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
-                    print("                  [N,D,G,C,A,H,M,O]")
+                    self.logger.debug("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
+                    self.logger.debug("                  [N,D,G,C,A,H,M,O]")
                     self.print_vector("  from source", stored_vector)
                     self.print_vector("  generated  ", combined_vector)
 
             elif left_eye is not None and right_eye is None:
-                print("Right fundus not found: [" + right_fundus + "] as it has been discarded, working with *left* "
-                      "fundus only")
+                self.logger.debug("Right fundus not found: [" + right_fundus + "] as it has been discarded, working "
+                                                                               "with *left* fundus only")
                 discarded_images = discarded_images + 1
                 stored_vector = left_eye.DiseaseVector
                 left_vector = left_eye.DiseaseVectorGenerated
@@ -184,22 +186,23 @@ class DataParser:
                 combined_vector = [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others]
                 difference, position = self.vector_differences(stored_vector, combined_vector)
                 if difference:
-                    print("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
-                    print("                  [N,D,G,C,A,H,M,O]")
+                    self.logger.debug("  Difference Id:" + str(patient_id) + ", Index: " + str(position))
+                    self.logger.debug("                  [N,D,G,C,A,H,M,O]")
                     self.print_vector("  from source", stored_vector)
                     self.print_vector("  generated  ", combined_vector)
             else:
                 discarded_images = discarded_images + 2
-                print("Left and Right fundus not found: [" + left_fundus + "],[" + right_fundus + "] as they have "
-                      "been discarded")
+                self.logger.debug(
+                    "Left and Right fundus not found: [" + left_fundus + "],[" + right_fundus + "] as they have "
+                                                                                                "been discarded")
 
-        print("Total discarded images: " + str(discarded_images))
-        print("Total training images: " + str(len(self.Patients)))
+        self.logger.debug("Total discarded images: " + str(discarded_images))
+        self.logger.debug("Total training images: " + str(len(self.Patients)))
 
-    @staticmethod
-    def print_vector(title, vector):
-        print(title + ":    [" + str(vector[0]) + "," + str(vector[1]) + "," + str(vector[2]) + "," + str(vector[3]) +
-              "," + str(vector[4]) + "," + str(vector[5]) + "," + str(vector[6]) + "," + str(vector[7]) + "]")
+    def print_vector(self, title, vector):
+        self.logger.debug(
+            title + ":    [" + str(vector[0]) + "," + str(vector[1]) + "," + str(vector[2]) + "," + str(vector[3]) +
+            "," + str(vector[4]) + "," + str(vector[5]) + "," + str(vector[6]) + "," + str(vector[7]) + "]")
 
     @staticmethod
     def vector_differences(left_vector, right_vector):

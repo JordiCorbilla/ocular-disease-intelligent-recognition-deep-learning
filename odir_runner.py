@@ -13,6 +13,8 @@
 # limitations under the License.
 # ==============================================================================
 from absl import app
+import logging
+import logging.config
 
 from odir_patients_to_tfrecord import GenerateTFRecord
 from odir_training_data_parser import DataParser
@@ -22,10 +24,16 @@ def main(argv):
     # Path to the annotation data
     file = r'dataset\ODIR-5K_Training_Annotations(Updated)_V2.xlsx'
     # Produce all the patient information and store it in an dictionary
+    logger.debug('Produce all the patient information and store it in an dictionary')
     parser = DataParser(file, 'Sheet1')
+    logger.debug('File ' + file + ' parsed successfully!')
+    logger.debug('Excel to Patients DTO')
     patients = parser.generate_patients()
+    logger.debug('Excel to Patients DTO Finished')
     # Additional quality check, can be commented out
+    logger.debug('Ensuring Training Data Quality')
     parser.check_data_quality()
+    logger.debug('Ensuring Training Data Quality Finished')
     # Transform patients into TFRecord
     images_path = r'C:\temp\ODIR-5K_Training_Dataset'
     generator = GenerateTFRecord(images_path)
@@ -33,4 +41,7 @@ def main(argv):
 
 
 if __name__ == '__main__':
+    # create logger
+    logging.config.fileConfig('logging.conf')
+    logger = logging.getLogger('odir')
     app.run(main)

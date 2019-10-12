@@ -19,6 +19,7 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 import tensorflow as tf
 import os
+import logging
 from matplotlib.image import imread
 from PIL import Image
 
@@ -26,31 +27,34 @@ from PIL import Image
 class GenerateTFRecord:
     def __init__(self, images_path):
         self.images_path = images_path
+        self.logger = logging.getLogger('odir')
 
     def patients_to_tfrecord(self, patients, tfrecord_file_name):
         # Iterate through the dictionary of patients
         with tf.io.TFRecordWriter(tfrecord_file_name) as writer:
             for key, value in patients.items():
+                self.logger.debug("Processing Image into TF Record:" + key + " - Start")
                 eye_image = os.path.join(self.images_path, key)
                 train_data = self._patient_image(eye_image, value)
                 writer.write(train_data.SerializeToString())
+                self.logger.debug("Processing Image into TF Record:" + key + " - End")
 
     @staticmethod
     def _patient_image(eye_image, patient):
-        # Read the actual image
-        image_data = imread(eye_image)
-        # Convert image to string data
-        image_str = image_data.tostring()
-        # Store shape of image for reconstruction purposes
-        img_shape = image_data.shape
+        # Get image shape
+        img_shape = imread(eye_image).shape
         # Get filename
         filename = os.path.basename(eye_image)
+        # Read the actual image in bytes
+        with tf.gfile.FastGFile(eye_image, 'rb') as fid:
+            image_data = fid.read()
+
         example = tf.train.Example(features=tf.train.Features(feature={
             'filename': tf.train.Feature(bytes_list=tf.train.BytesList(value=[filename.encode('utf-8')])),
             'rows': tf.train.Feature(int64_list=tf.train.Int64List(value=[img_shape[0]])),
             'cols': tf.train.Feature(int64_list=tf.train.Int64List(value=[img_shape[1]])),
             'channels': tf.train.Feature(int64_list=tf.train.Int64List(value=[img_shape[2]])),
-            'image': tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_str])),
+            'image': tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_data])),
             'id': tf.train.Feature(int64_list=tf.train.Int64List(value=[patient.id])),
             'age': tf.train.Feature(int64_list=tf.train.Int64List(value=[patient.age])),
             'sex': tf.train.Feature(bytes_list=tf.train.BytesList(value=[patient.sex.encode('utf-8')])),

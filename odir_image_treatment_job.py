@@ -18,6 +18,9 @@ from os import listdir
 from os.path import isfile, join
 from odir_image_resizer import ImageResizer
 
+# This default job to 200px images, will shrink the dataset from 1,439,776,768 bytes
+# to 116,813,824 bytes 91.8% size reduction
+
 
 def process_all_images():
     files = [f for f in listdir(source_folder) if isfile(join(source_folder, f))]

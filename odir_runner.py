@@ -34,10 +34,13 @@ def main(argv):
     logger.debug('Ensuring Training Data Quality')
     parser.check_data_quality()
     logger.debug('Ensuring Training Data Quality Finished')
-    # Transform patients into TFRecord
-    images_path = r'C:\temp\ODIR-5K_Training_Dataset'
+    # Transform patients into TFRecord (from the treated images folder)
+    images_path = r'C:\temp\ODIR-5K_Training_Dataset_treated'
+    # With treated images we reduce the TFRecord size from 91,117,187,072 bytes
+    # to 98,721,792 bytes, 99.89% reduction
     generator = GenerateTFRecord(images_path)
     generator.patients_to_tfrecord(patients, 'images.tfrecord')
+    logger.debug('All Done!')
 
 
 if __name__ == '__main__':

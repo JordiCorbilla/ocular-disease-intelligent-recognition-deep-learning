@@ -17,11 +17,8 @@ import warnings
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 import tensorflow as tf
-import shutil
-import numpy as np
 import matplotlib.pyplot as plt
 import os
-import matplotlib.image as mpimg
 
 
 class TFRecordReader:
@@ -54,7 +51,6 @@ class TFRecordReader:
         label_record = example['label']
         return [filename, image_record, image_shape, id_record, age_record, sex_record, label_record]
 
-
     def show_images(self):
         # Pipeline of dataset and iterator
         dataset = tf.data.TFRecordDataset([self.tfrecord_file])
@@ -62,22 +58,35 @@ class TFRecordReader:
         iterator = tf.compat.v1.data.make_one_shot_iterator(dataset)
         next_element = iterator.get_next()
 
-        with tf.compat.v1.Session as sess:
+        with tf.compat.v1.Session() as sess:
             try:
                 while True:
                     data_record = sess.run(next_element)
                     plt.imshow(data_record[1])
                     label = data_record[6]
-                    title = ""
+                    title = data_record[0]
                     if label[0] == 1:
-                        title = title + "Normal"
+                        title = title + " Normal"
+                    if label[1] == 1:
+                        title = title + " Diabetes"
+                    if label[2] == 1:
+                        title = title + " Glaucoma"
+                    if label[3] == 1:
+                        title = title + " Cataract"
+                    if label[4] == 1:
+                        title = title + " AMD"
+                    if label[5] == 1:
+                        title = title + " Hypertension"
+                    if label[6] == 1:
+                        title = title + " Myopia"
+                    if label[7] == 1:
+                        title = title + " Others"
                     plt.title(title)
+                    plt.show()
             except:
                 pass
 
- 
+
 if __name__ == '__main__':
     t = TFRecordReader('images.tfrecord')
-    # t.extract_image()
-    # t.extrant_single_image()
     t.show_images()

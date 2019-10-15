@@ -15,6 +15,7 @@
 from absl import app
 import logging
 import logging.config
+import time
 
 from odir_patients_to_tfrecord import GenerateTFRecord
 from odir_training_data_parser import DataParser
@@ -24,6 +25,7 @@ def main(argv):
     # Path to the annotation data
     file = r'dataset\ODIR-5K_Training_Annotations(Updated)_V2.xlsx'
     # Produce all the patient information and store it in an dictionary
+    start = time.time()
     logger.debug('Produce all the patient information and store it in an dictionary')
     parser = DataParser(file, 'Sheet1')
     logger.debug('File ' + file + ' parsed successfully!')
@@ -40,7 +42,8 @@ def main(argv):
     # to 98,721,792 bytes, 99.89% reduction
     generator = GenerateTFRecord(images_path)
     generator.patients_to_tfrecord(patients, 'images.tfrecord')
-    logger.debug('All Done!')
+    end = time.time()
+    logger.debug('All Done in ' + str(end - start) + ' seconds')
 
 
 if __name__ == '__main__':

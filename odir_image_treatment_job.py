@@ -34,7 +34,7 @@ if __name__ == '__main__':
     image_width = 200
     # set the quality of the resultant jpeg to 100%
     quality = 100
-    source_folder = r'C:\temp\ODIR-5K_Training_Dataset'
+    source_folder = r'C:\temp\ODIR-5K_Training_Dataset_cropped'
     destination_folder = r'C:\temp\ODIR-5K_Training_Dataset_treated'
     # create logger
     logging.config.fileConfig('logging.conf')

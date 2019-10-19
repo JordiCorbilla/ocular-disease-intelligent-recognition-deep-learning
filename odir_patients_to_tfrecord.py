@@ -46,7 +46,7 @@ class GenerateTFRecord:
         # Get filename
         filename = os.path.basename(eye_image)
         # Read the actual image in bytes
-        with tf.gfile.FastGFile(eye_image, 'rb') as fid:
+        with tf.io.gfile.GFile(eye_image, 'rb') as fid:
             image_data = fid.read()
 
         example = tf.train.Example(features=tf.train.Features(feature={

@@ -21,13 +21,14 @@ from PIL import Image
 
 
 class ImageResizer:
-    def __init__(self, image_width, quality, source_folder, destination_folder, file_name):
+    def __init__(self, image_width, quality, source_folder, destination_folder, file_name, keep_aspect_ratio):
         self.logger = logging.getLogger('odir')
         self.image_width = image_width
         self.quality = quality
         self.source_folder = source_folder
         self.destination_folder= destination_folder
         self.file_name = file_name
+        self.keep_aspect_ration = keep_aspect_ratio
 
     def run(self):
         """ Runs the image library using the constructor arguments.
@@ -41,9 +42,14 @@ class ImageResizer:
 
         file = os.path.join(self.source_folder, self.file_name)
         img = Image.open(file)
-        width_percentage = (self.image_width / float(img.size[0]))
-        height_size = int((float(img.size[1]) * float(width_percentage)))
-        img = img.resize((self.image_width, height_size), PIL.Image.ANTIALIAS)
+        if (self.keep_aspect_ration):
+            # it will have the exact same width-to-height ratio as the original photo
+            width_percentage = (self.image_width / float(img.size[0]))
+            height_size = int((float(img.size[1]) * float(width_percentage)))
+            img = img.resize((self.image_width, height_size), PIL.Image.ANTIALIAS)
+        else:
+            # This will force the image to be square
+            img = img.resize((self.image_width, self.image_width), PIL.Image.ANTIALIAS)
         if "right" in self.file_name:
             self.logger.debug("Right eye image found. Flipping it")
             img.transpose(Image.FLIP_LEFT_RIGHT).save(os.path.join(self.destination_folder, self.file_name), optimize=True, quality=self.quality)

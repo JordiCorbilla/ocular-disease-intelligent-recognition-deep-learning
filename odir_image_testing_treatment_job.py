@@ -35,8 +35,8 @@ if __name__ == '__main__':
     keep_aspect_ratio = False
     # set the quality of the resultant jpeg to 100%
     quality = 100
-    source_folder = r'C:\temp\ODIR-5K_Training_Dataset_cropped'
-    destination_folder = r'C:\temp\ODIR-5K_Training_Dataset_treated'
+    source_folder = r'C:\temp\ODIR-5K_Testing_Images_cropped'
+    destination_folder = r'C:\temp\ODIR-5K_Testing_Images_treated'
     # create logger
     logging.config.fileConfig('logging.conf')
     logger = logging.getLogger('odir')

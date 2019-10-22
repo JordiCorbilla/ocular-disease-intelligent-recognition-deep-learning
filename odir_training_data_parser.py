@@ -15,6 +15,7 @@
 import logging
 import pandas as pd
 import xlrd as x
+import csv
 
 from odir_eye_patient import EyePatient
 from odir_rule_engine import RuleEngine
@@ -215,3 +216,127 @@ class DataParser:
                 position = i
 
         return not match, position
+
+    def generate_ground_truth_csv(self):
+        """Generate a CSV that contains the output of all the classes.
+        Args:
+          No arguments are required.
+        Returns:
+          File with the output
+        """
+        # The process here is to generate a CSV file with the content of the data annotations file
+        # and also the total of labels per eye. This will help us later to process the images
+        with open('odir.csv', 'w', newline='') as csv_file:
+            file_writer = csv.writer(csv_file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            file_writer.writerow(['ID', 'Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertension',
+                                  'Myopia', 'Others', 'Total'])
+            for i in self.sheet.index:
+                left_fundus = self.sheet['Left-Fundus'][i]
+                right_fundus = self.sheet['Right-Fundus'][i]
+
+                if left_fundus in self.Patients:
+                    left_eye = self.Patients[left_fundus]
+                    left_vector = left_eye.DiseaseVectorGenerated
+                    normal = left_vector[0]
+                    diabetes = left_vector[1]
+                    glaucoma = left_vector[2]
+                    cataract = left_vector[3]
+                    amd = left_vector[4]
+                    hypertension = left_vector[5]
+                    myopia = left_vector[6]
+                    others = left_vector[7]
+                    file_writer.writerow([left_fundus, normal, diabetes, glaucoma, cataract, amd, hypertension, myopia,
+                                          others,
+                                          normal + diabetes + glaucoma + cataract + amd + hypertension + myopia + others])
+
+                # Check if the Right eye exists in the dictionary
+                if right_fundus in self.Patients:
+                    right_eye = self.Patients[right_fundus]
+                    right_vector = right_eye.DiseaseVectorGenerated
+                    normal = right_vector[0]
+                    diabetes = right_vector[1]
+                    glaucoma = right_vector[2]
+                    cataract = right_vector[3]
+                    amd = right_vector[4]
+                    hypertension = right_vector[5]
+                    myopia = right_vector[6]
+                    others = right_vector[7]
+                    file_writer.writerow([right_fundus, normal, diabetes, glaucoma, cataract, amd, hypertension, myopia,
+                                          others,
+                                          normal + diabetes + glaucoma + cataract + amd + hypertension + myopia + others])
+
+    def generate_ground_truth_class_csv(self):
+        """Generate a CSV that contains the output of all the classes once.
+        Args:
+          No arguments are required.
+        Returns:
+          File with the output
+        """
+        # The ground truth generation is different here and we will discard any images that are multi-labelled
+        with open('odir_classes.csv', 'w', newline='') as csv_file:
+            file_writer = csv.writer(csv_file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            file_writer.writerow(['ID', 'Class'])
+            for i in self.sheet.index:
+                left_fundus = self.sheet['Left-Fundus'][i]
+                right_fundus = self.sheet['Right-Fundus'][i]
+
+                if left_fundus in self.Patients:
+                    left_eye = self.Patients[left_fundus]
+                    left_vector = left_eye.DiseaseVectorGenerated
+                    normal = left_vector[0]
+                    diabetes = left_vector[1]
+                    glaucoma = left_vector[2]
+                    cataract = left_vector[3]
+                    amd = left_vector[4]
+                    hypertension = left_vector[5]
+                    myopia = left_vector[6]
+                    others = left_vector[7]
+                    # Only save the image that is labelled once. the rest will be discarded
+                    if normal + diabetes + glaucoma + cataract + amd + hypertension + myopia + others == 1:
+                        if normal == 1:
+                            file_writer.writerow([left_fundus, 1])
+                        if diabetes == 1:
+                            file_writer.writerow([left_fundus, 2])
+                        if glaucoma == 1:
+                            file_writer.writerow([left_fundus, 3])
+                        if cataract == 1:
+                            file_writer.writerow([left_fundus, 4])
+                        if amd == 1:
+                            file_writer.writerow([left_fundus, 5])
+                        if hypertension == 1:
+                            file_writer.writerow([left_fundus, 6])
+                        if myopia == 1:
+                            file_writer.writerow([left_fundus, 7])
+                        if others == 1:
+                            file_writer.writerow([left_fundus, 8])
+
+                # Check if the Right eye exists in the dictionary
+                if right_fundus in self.Patients:
+                    right_eye = self.Patients[right_fundus]
+                    right_vector = right_eye.DiseaseVectorGenerated
+                    normal = right_vector[0]
+                    diabetes = right_vector[1]
+                    glaucoma = right_vector[2]
+                    cataract = right_vector[3]
+                    amd = right_vector[4]
+                    hypertension = right_vector[5]
+                    myopia = right_vector[6]
+                    others = right_vector[7]
+                    # Only save the image that is labelled once. the rest will be discarded
+                    if normal + diabetes + glaucoma + cataract + amd + hypertension + myopia + others == 1:
+                        if normal == 1:
+                            file_writer.writerow([right_fundus, 1])
+                        if diabetes == 1:
+                            file_writer.writerow([right_fundus, 2])
+                        if glaucoma == 1:
+                            file_writer.writerow([right_fundus, 3])
+                        if cataract == 1:
+                            file_writer.writerow([right_fundus, 4])
+                        if amd == 1:
+                            file_writer.writerow([right_fundus, 5])
+                        if hypertension == 1:
+                            file_writer.writerow([right_fundus, 6])
+                        if myopia == 1:
+                            file_writer.writerow([right_fundus, 7])
+                        if others == 1:
+                            file_writer.writerow([right_fundus, 8])

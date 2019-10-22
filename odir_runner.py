@@ -32,10 +32,21 @@ def main(argv):
     logger.debug('Excel to Patients DTO')
     patients = parser.generate_patients()
     logger.debug('Excel to Patients DTO Finished')
+
     # Additional quality check, can be commented out
     logger.debug('Ensuring Training Data Quality')
     parser.check_data_quality()
     logger.debug('Ensuring Training Data Quality Finished')
+
+    # Additional CSV Generation
+    logger.debug('Ensuring CSV generation')
+    parser.generate_ground_truth_csv()
+    logger.debug('Ensuring CSV generation Finished')
+
+    # Additional CSV for single class labelling
+    logger.debug('Ensuring CSV generation')
+    parser.generate_ground_truth_class_csv()
+    logger.debug('Ensuring CSV generation Finished')
     # Transform patients into TFRecord (from the treated images folder)
     images_path = r'C:\temp\ODIR-5K_Training_Dataset_treated'
     # With treated images we reduce the TFRecord size from 91,117,187,072 bytes

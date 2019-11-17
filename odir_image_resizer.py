@@ -42,7 +42,7 @@ class ImageResizer:
 
         file = os.path.join(self.source_folder, self.file_name)
         img = Image.open(file)
-        if (self.keep_aspect_ration):
+        if self.keep_aspect_ration:
             # it will have the exact same width-to-height ratio as the original photo
             width_percentage = (self.image_width / float(img.size[0]))
             height_size = int((float(img.size[1]) * float(width_percentage)))

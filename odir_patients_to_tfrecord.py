@@ -14,9 +14,9 @@
 # ==============================================================================
 
 # Remove all future warnings thrown by numpy
-import warnings
-
-warnings.filterwarnings("ignore", category=FutureWarning)
+# import warnings
+#
+# warnings.filterwarnings("ignore", category=FutureWarning)
 import tensorflow as tf
 import os
 import logging
@@ -41,23 +41,37 @@ class GenerateTFRecord:
 
     @staticmethod
     def _patient_image(eye_image, patient):
-        # Get image shape
-        img_shape = imread(eye_image).shape
+        image_string = open(eye_image, 'rb').read()
+        image_shape = tf.image.decode_jpeg(image_string).shape
         # Get filename
         filename = os.path.basename(eye_image)
-        # Read the actual image in bytes
-        with tf.io.gfile.GFile(eye_image, 'rb') as fid:
-            image_data = fid.read()
+        # feature = {
+        #     'filename': _bytes_feature(filename.encode('utf-8')),
+        #     'rows': _int64_feature(image_shape[0]),
+        #     'cols': _int64_feature(image_shape[1]),
+        #     'channels': _int64_feature(image_shape[2]),
+        #     'label': _int64_feature(label),
+        #     'image': _bytes_feature(image_string),
+        # }
 
-        example = tf.train.Example(features=tf.train.Features(feature={
+        feature = {
             'filename': tf.train.Feature(bytes_list=tf.train.BytesList(value=[filename.encode('utf-8')])),
-            'rows': tf.train.Feature(int64_list=tf.train.Int64List(value=[img_shape[0]])),
-            'cols': tf.train.Feature(int64_list=tf.train.Int64List(value=[img_shape[1]])),
-            'channels': tf.train.Feature(int64_list=tf.train.Int64List(value=[img_shape[2]])),
-            'image': tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_data])),
+            'rows': tf.train.Feature(int64_list=tf.train.Int64List(value=[image_shape[0]])),
+            'cols': tf.train.Feature(int64_list=tf.train.Int64List(value=[image_shape[1]])),
+            'channels': tf.train.Feature(int64_list=tf.train.Int64List(value=[image_shape[2]])),
+            'image': tf.train.Feature(bytes_list=tf.train.BytesList(value=[image_string])),
             'id': tf.train.Feature(int64_list=tf.train.Int64List(value=[patient.id])),
             'age': tf.train.Feature(int64_list=tf.train.Int64List(value=[patient.age])),
             'sex': tf.train.Feature(bytes_list=tf.train.BytesList(value=[patient.sex.encode('utf-8')])),
             'label': tf.train.Feature(int64_list=tf.train.Int64List(value=patient.DiseaseVectorGenerated))
-        }))
+        }
+
+        # Get image shape
+        img_shape = imread(eye_image).shape
+
+        # Read the actual image in bytes
+        #with tf.io.gfile.GFile(eye_image, 'rb') as fid:
+        #    image_data = fid.read()
+
+        example = tf.train.Example(features=tf.train.Features(feature=feature))
         return example

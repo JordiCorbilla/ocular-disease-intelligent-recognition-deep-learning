@@ -281,8 +281,8 @@ def main(argv):
     start = time.time()
     training_path = r'C:\temp\ODIR-5K_Training_Dataset_treated'
     testing_path = r'C:\temp\ODIR-5K_Testing_Images_treated'
-    csv_file = 'odir.csv'
-    training_file = 'XYZ_ODIR.csv'
+    csv_file = 'ground_truth\odir.csv'
+    training_file = 'ground_truth\XYZ_ODIR.csv'
     logger.debug('Generating npy files')
     generator = NumpyDataGenerator(training_path, testing_path, csv_file, training_file)
 

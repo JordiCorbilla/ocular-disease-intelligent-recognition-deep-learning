@@ -18,9 +18,9 @@ from os import listdir
 from os.path import isfile, join
 from odir_image_resizer import ImageResizer
 
+
 # This default job to 224px images, will shrink the dataset from 1,439,776,768 bytes
 # to 116,813,824 bytes 91.8% size reduction
-
 
 def process_all_images():
     files = [f for f in listdir(source_folder) if isfile(join(source_folder, f))]
@@ -31,12 +31,12 @@ def process_all_images():
 
 if __name__ == '__main__':
     # Set the base width of the image to 200 pixels
-    image_width = 224
+    image_width = 128
     keep_aspect_ratio = False
     # set the quality of the resultant jpeg to 100%
     quality = 100
-    source_folder = r'C:\temp\ODIR-5K_Training_Dataset_cropped'
-    destination_folder = r'C:\temp\ODIR-5K_Training_Dataset_treated'
+    source_folder = r'C:\temp\ODIR-5K_Testing_Images_cropped'
+    destination_folder = r'C:\temp\ODIR-5K_Testing_Images_treated'
     # create logger
     logging.config.fileConfig('logging.conf')
     logger = logging.getLogger('odir')

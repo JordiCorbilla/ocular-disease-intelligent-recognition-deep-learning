@@ -31,12 +31,12 @@ def process_all_images():
 
 if __name__ == '__main__':
     # Set the base width of the image to 200 pixels
-    image_width = 128
+    image_width = 224
     keep_aspect_ratio = False
     # set the quality of the resultant jpeg to 100%
     quality = 100
     source_folder = r'C:\temp\ODIR-5K_Training_Dataset_cropped'
-    destination_folder = r'C:\temp\ODIR-5K_Training_Dataset_treated'
+    destination_folder = r'C:\temp\ODIR-5K_Training_Dataset_treated' + '_' + str(image_width)
     # create logger
     logging.config.fileConfig('logging.conf')
     logger = logging.getLogger('odir')

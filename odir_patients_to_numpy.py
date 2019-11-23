@@ -279,8 +279,9 @@ class NumpyDataGenerator:
 
 def main(argv):
     start = time.time()
-    training_path = r'C:\temp\ODIR-5K_Training_Dataset_treated'
-    testing_path = r'C:\temp\ODIR-5K_Testing_Images_treated'
+    image_width = 224
+    training_path = r'C:\temp\ODIR-5K_Training_Dataset_treated' + '_' + str(image_width)
+    testing_path = r'C:\temp\ODIR-5K_Testing_Images_treated' + '_' + str(image_width)
     csv_file = 'ground_truth\odir.csv'
     training_file = 'ground_truth\XYZ_ODIR.csv'
     logger.debug('Generating npy files')
@@ -294,8 +295,8 @@ def main(argv):
     # generator.npy_training_files_split(1000, 'odir_training',
     # 'odir_training_labels', 'odir_testing', 'odir_testing_labels')
 
-    generator.npy_training_files_split_all(400, 'odir_training', 'odir_training_labels', 'odir_testing',
-                                           'odir_testing_labels')
+    generator.npy_training_files_split_all(400, 'odir_training' + '_' + str(image_width), 'odir_training_labels' + '_' + str(image_width), 'odir_testing' + '_' + str(image_width),
+                                           'odir_testing_labels' + '_' + str(image_width))
     end = time.time()
     logger.debug('Training Records ' + str(generator.total_records_training))
     logger.debug('Testing Records ' + str(generator.total_records_testing))

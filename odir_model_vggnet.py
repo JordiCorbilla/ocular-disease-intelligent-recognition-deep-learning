@@ -21,56 +21,43 @@ class VggNet(ModelBase):
 
     def compile(self):
         x = models.Sequential()
-        x.add(layers.ZeroPadding2D((1, 1), input_shape=self.input_shape))
+
+
         # Block 1
-        x.add(layers.Conv2D(64, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(64, (3, 3), activation='relu'))
+        x.add(layers.Conv2D(input_shape=self.input_shape, filters=64,kernel_size=(3,3),padding="same", activation="relu"))
+
+        x.add(layers.Conv2D(filters=64,kernel_size=(3,3),padding="same", activation="relu"))
         x.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-        x.add(layers.ZeroPadding2D((1, 1)))
 
         # Block 2
-        x.add(layers.Conv2D(128, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(128, (3, 3), activation='relu'))
+        x.add(layers.Conv2D(128, kernel_size=(3,3),padding="same", activation="relu"))
+        x.add(layers.Conv2D(128, kernel_size=(3,3),padding="same", activation="relu"))
         x.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-        x.add(layers.ZeroPadding2D((1, 1)))
-
         # Block 3
-        x.add(layers.Conv2D(256, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(256, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(256, (3, 3), activation='relu'))
+        x.add(layers.Conv2D(256, kernel_size=(3,3),padding="same", activation="relu"))
+        x.add(layers.Conv2D(256, kernel_size=(3,3),padding="same", activation="relu"))
+        x.add(layers.Conv2D(256, kernel_size=(3,3),padding="same", activation="relu"))
         x.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-
         # Block 4
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(512, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(512, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(512, (3, 3), activation='relu'))
+        x.add(layers.Conv2D(512, kernel_size=(3,3),padding="same", activation="relu"))
+        x.add(layers.Conv2D(512, kernel_size=(3,3),padding="same", activation="relu"))
+        x.add(layers.Conv2D(512, kernel_size=(3,3),padding="same", activation="relu"))
         x.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
-
         # Block 5
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(512, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(512, (3, 3), activation='relu'))
-        x.add(layers.ZeroPadding2D((1, 1)))
-        x.add(layers.Conv2D(512, (3, 3), activation='relu'))
+        x.add(layers.Conv2D(512, kernel_size=(3,3),padding="same", activation="relu"))
+        x.add(layers.Conv2D(512, kernel_size=(3,3),padding="same", activation="relu"))
+        x.add(layers.Conv2D(512, kernel_size=(3,3),padding="same", activation="relu"))
         x.add(layers.MaxPooling2D((2, 2), strides=(2, 2)))
 
         x.add(layers.Flatten())
         x.add(layers.Dense(4096, activation='relu'))
-        x.add(layers.Dropout(0.5))
         x.add(layers.Dense(4096, activation='relu'))
-        x.add(layers.Dropout(0.5))
-        x.add(layers.Dense(8, activation='sigmoid'))
+        x.add(layers.Dense(1000, activation='softmax'))
+        x.load_weights(r'C:\temp\vgg16_weights_tf_dim_ordering_tf_kernels.h5')
 
-        sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
-        x.compile(optimizer=sgd, loss='binary_crossentropy', metrics=['accuracy'])
+        x.pop()
+        x.add(layers.Dense(8, activation='sigmoid'))
+        x.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
         self.show_summary(x)
         self.plot_summary(x, 'model_vggnet.png')
         return x

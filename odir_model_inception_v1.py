@@ -19,7 +19,7 @@ from tensorflow.python.keras import Input
 from odir_model_base import ModelBase
 
 
-class GoogleNet(ModelBase):
+class InceptionV1(ModelBase):
 
     def compile(self):
         input_img = Input(shape=self.input_shape)
@@ -40,8 +40,10 @@ class GoogleNet(ModelBase):
         dense_3 = Dense(150, activation='relu')(dense_2)
         output = Dense(8, activation='sigmoid')(dense_3)
         model = Model([input_img], output)
+
         model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
         self.show_summary(model)
-        self.plot_summary(model, 'model_googlenet.png')
+        self.plot_summary(model, 'model_inception_v1.png')
 
         return model

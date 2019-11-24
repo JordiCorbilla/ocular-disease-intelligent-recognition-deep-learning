@@ -30,8 +30,8 @@ import os
 
 import odir
 from odir_model_factory import Factory, ModelTypes
-from odir_model_googlenet import GoogleNet
-from odir_model_vggnet import VggNet
+from odir_model_inception_v1 import GoogleNet
+from odir_model_vgg16 import VggNet
 
 os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
 from tensorflow.keras.layers import Dense, Flatten, Conv2D, Dropout, MaxPooling2D

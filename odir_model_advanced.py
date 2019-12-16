@@ -1,4 +1,4 @@
-# Copyright 2019 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ class Advanced(ModelBase):
         model.add(layers.Flatten())
         model.add(layers.Dense(64, activation='relu'))
         model.add(layers.Dense(8, activation='sigmoid'))
-        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=self.metrics)
         self.show_summary(model)
         self.plot_summary(model, 'model_advanced.png')
         return model

@@ -1,4 +1,4 @@
-# Copyright 2019 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,11 +27,11 @@ class ModelTypes(enum.Enum):
 
 class Factory:
 
-    def __init__(self, input_shape):
+    def __init__(self, input_shape, metrics):
         self.Makers = {
-            ModelTypes.vgg16: Vgg16(input_shape),
-            ModelTypes.inception_v1: InceptionV1(input_shape),
-            ModelTypes.advanced_testing: Advanced(input_shape)
+            ModelTypes.vgg16: Vgg16(input_shape, metrics),
+            ModelTypes.inception_v1: InceptionV1(input_shape, metrics),
+            ModelTypes.advanced_testing: Advanced(input_shape, metrics)
         }
 
     def compile(self, model_type):

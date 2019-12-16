@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,21 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-from abc import abstractmethod
-import tensorflow as tf
 
 
-class ModelBase:
-    def __init__(self, input_shape, metrics):
-        self.input_shape = input_shape
-        self.metrics = metrics
-
-    def show_summary(self, model):
-        model.summary()
-
-    def plot_summary(self, model, file_name):
-        tf.keras.utils.plot_model(model, to_file=file_name, show_shapes=True, show_layer_names=True)
-
-    @abstractmethod
-    def compile(self):
-        pass
+class Normalizer:
+    def normalize_vgg16(self, x_test):
+        x_test = x_test / 1.0
+        x_test = x_test[..., ::-1]
+        mean = [103.939, 116.779, 123.68]
+        x_test[..., 0] -= mean[0]
+        x_test[..., 1] -= mean[1]
+        x_test[..., 2] -= mean[2]
+        return x_test

@@ -1,4 +1,4 @@
-# Copyright 2019 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import glob
 
 
 class NumpyDataGenerator:
-    def __init__(self, training_path, testing_path, csv_path, csv_testing_path):
+    def __init__(self, training_path, testing_path, csv_path, csv_testing_path, augmented_path, csv_augmented_file):
         self.training_path = training_path
         self.testing_path = testing_path
         self.csv_path = csv_path
@@ -32,6 +32,8 @@ class NumpyDataGenerator:
         self.logger = logging.getLogger('odir')
         self.total_records_training = 0
         self.total_records_testing = 0
+        self.csv_augmented_path = csv_augmented_file
+        self.augmented_path = augmented_path
 
     def npy_training_files(self, file_name_training, file_name_training_labels):
         training = []
@@ -196,12 +198,16 @@ class NumpyDataGenerator:
 
     def npy_training_files_split_all(self, split_number, file_name_training, file_name_training_labels,
                                      file_name_testing,
-                                     file_name_testing_labels):
+                                     file_name_testing_labels, include_augmented):
+        split_factor = 10820
         training = []
         training_labels = []
+        training_2 = []
+        training_labels_2 = []
         testing = []
         testing_labels = []
         images_used = []
+        count_images = 0
 
         class_names = ['normal', 'diabetes', 'glaucoma', 'cataract', 'amd',
                        'hypertension', 'myopia', 'others']
@@ -237,8 +243,7 @@ class NumpyDataGenerator:
                         if self.is_sickness(row, sickness) and class_count[sickness] < split_pocket:
                             testing.append(image)
                             images_used.append(row[0] + ',' + sickness + ',' + str(class_count[sickness]))
-                            testing_labels.append(
-                                [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others])
+                            testing_labels.append([normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others])
                             self.total_records_testing = self.total_records_testing + 1
                             class_count[sickness] = class_count[sickness] + 1
                             found = True
@@ -246,9 +251,38 @@ class NumpyDataGenerator:
 
                     if not found:
                         training.append(image)
-                        training_labels.append(
-                            [normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others])
+                        training_labels.append([normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others])
                         self.total_records_training = self.total_records_training + 1
+                        count_images = count_images + 1
+
+        if include_augmented:
+            with open(self.csv_augmented_path) as csvDataFile:
+                csv_reader = csv.reader(csvDataFile)
+                for row in csv_reader:
+                    column_id = row[0]
+                    normal = row[1]
+                    diabetes = row[2]
+                    glaucoma = row[3]
+                    cataract = row[4]
+                    amd = row[5]
+                    hypertension = row[6]
+                    myopia = row[7]
+                    others = row[8]
+                    # just discard the first row
+                    if column_id != "ID":
+                        self.logger.debug("Processing image: " + column_id)
+                        # load first the image from the folder
+                        eye_image = os.path.join(self.augmented_path, column_id)
+                        image = cv2.imread(eye_image)
+                        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+                        if count_images >= split_factor:
+                            training_2.append(image)
+                            training_labels_2.append([normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others])
+                        else:
+                            training.append(image)
+                            training_labels.append([normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others])
+                        self.total_records_training = self.total_records_training + 1
+                        count_images = count_images + 1
 
         testing = np.array(testing, dtype='uint8')
         testing_labels = np.array(testing_labels, dtype='uint8')
@@ -264,16 +298,31 @@ class NumpyDataGenerator:
         # for example (6069 * 28 * 28 * 3)-> (6069 x 2352) (14,274,288)
         training = np.reshape(training, [training.shape[0], training.shape[1], training.shape[2], training.shape[3]])
 
+        training_2 = np.array(training_2, dtype='uint8')
+        training_labels_2 = np.array(training_labels_2, dtype='uint8')
+        # convert (number of images x height x width x number of channels) to (number of images x (height * width *3))
+        # for example (6069 * 28 * 28 * 3)-> (6069 x 2352) (14,274,288)
+        training_2 = np.reshape(training_2, [training_2.shape[0], training_2.shape[1], training_2.shape[2], training_2.shape[3]])
+
+        self.logger.debug(testing.shape)
+        self.logger.debug(testing_labels.shape)
+        self.logger.debug(training.shape)
+        self.logger.debug(training_labels.shape)
+        self.logger.debug(training_2.shape)
+        self.logger.debug(training_labels_2.shape)
+
         # save numpy array as .npy formats
-        np.save(file_name_training, training)
-        np.save(file_name_training_labels, training_labels)
+        np.save(file_name_training + '_1', training)
+        np.save(file_name_training_labels + '_1', training_labels)
+        np.save(file_name_training + '_2', training_2)
+        np.save(file_name_training_labels + '_2', training_labels_2)
         self.logger.debug("Closing CSV file")
         for sickness in class_names:
             self.logger.debug('found ' + sickness + ' ' + str(class_count[sickness]))
         csv_writer = csv.writer(open("files_used.csv", 'w', newline=''))
         for item in images_used:
             self.logger.debug(item)
-            entries = item.split(",");
+            entries = item.split(",")
             csv_writer.writerow(entries)
 
 
@@ -282,10 +331,13 @@ def main(argv):
     image_width = 224
     training_path = r'C:\temp\ODIR-5K_Training_Dataset_treated' + '_' + str(image_width)
     testing_path = r'C:\temp\ODIR-5K_Testing_Images_treated' + '_' + str(image_width)
-    csv_file = 'ground_truth\odir.csv'
+    augmented_path = r'C:\temp\ODIR-5K_Training_Dataset_augmented' + '_' + str(image_width)
+    csv_file = r'ground_truth\odir.csv'
+    csv_augmented_file = r'ground_truth\odir_augmented.csv'
     training_file = 'ground_truth\XYZ_ODIR.csv'
     logger.debug('Generating npy files')
-    generator = NumpyDataGenerator(training_path, testing_path, csv_file, training_file)
+    generator = NumpyDataGenerator(training_path, testing_path, csv_file, training_file, augmented_path,
+                                   csv_augmented_file)
 
     # Generate testing file
     # generator.npy_testing_files('odir_testing', 'odir_testing_labels')
@@ -295,8 +347,11 @@ def main(argv):
     # generator.npy_training_files_split(1000, 'odir_training',
     # 'odir_training_labels', 'odir_testing', 'odir_testing_labels')
 
-    generator.npy_training_files_split_all(400, 'odir_training' + '_' + str(image_width), 'odir_training_labels' + '_' + str(image_width), 'odir_testing' + '_' + str(image_width),
-                                           'odir_testing_labels' + '_' + str(image_width))
+    generator.npy_training_files_split_all(400, 'odir_training' + '_' + str(image_width),
+                                           'odir_training_labels' + '_' + str(image_width),
+                                           'odir_testing' + '_' + str(image_width),
+                                           'odir_testing_labels' + '_' + str(image_width),
+                                           True)
     end = time.time()
     logger.debug('Training Records ' + str(generator.total_records_training))
     logger.debug('Testing Records ' + str(generator.total_records_testing))

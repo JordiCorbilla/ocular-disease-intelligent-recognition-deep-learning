@@ -1,4 +1,4 @@
-# Copyright 2019 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ class InceptionV1(ModelBase):
         output = Dense(8, activation='sigmoid')(dense_3)
         model = Model([input_img], output)
 
-        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=self.metrics)
 
         self.show_summary(model)
         self.plot_summary(model, 'model_inception_v1.png')

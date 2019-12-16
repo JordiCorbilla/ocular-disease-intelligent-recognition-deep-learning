@@ -1,4 +1,4 @@
-# Copyright 2019 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,15 @@
 import numpy as np
 
 
-def load_data(image_size):
+def load_data(image_size, index):
     """Loads the ODIR dataset.
 
     Returns:
       Tuple of Numpy arrays: `(x_train, y_train), (x_test, y_test)`.
 
     """
-    x_train = np.load('odir_training'+'_' + str(image_size)+'.npy')
-    y_train = np.load('odir_training_labels'+'_' + str(image_size)+'.npy')
+    x_train = np.load('odir_training'+'_' + str(image_size) + '_' + str(index)+'.npy')
+    y_train = np.load('odir_training_labels'+'_' + str(image_size) + '_' + str(index)+'.npy')
 
     x_test = np.load('odir_testing'+'_' + str(image_size)+'.npy')
     y_test = np.load('odir_testing_labels'+'_' + str(image_size)+'.npy')

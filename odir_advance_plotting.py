@@ -1,4 +1,4 @@
-# Copyright 2019 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,13 +39,13 @@ class Plotter:
             if metric == 'loss':
                 plt.ylim([0, plt.ylim()[1]])
             elif metric == 'auc':
-                plt.ylim([0.8, 1])
+                plt.ylim([0, 1])
             else:
                 plt.ylim([0, 1])
 
             plt.legend()
 
-        plt.savefig('image_run' + str(index) + test_run + '.png')
+        plt.savefig(test_run)
         plt.show()
         plt.close()
 
@@ -73,7 +73,7 @@ class Plotter:
         plt.yticks([])
 
         plt.imshow(img)
-
+        label_check = [0,0,0,0,0,0,0,0]
         ground = ""
         count_true = 0
         predicted_true = 0
@@ -82,19 +82,26 @@ class Plotter:
             if true_label[index] >= 0.5:
                 count_true = count_true + 1
                 ground = ground + self.class_names[index] + "\n"
+                label_check[index] = 1
             if predictions_array[index] >= 0.5:
                 predicted_true = predicted_true + 1
+                label_check[index] = label_check[index] + 1
 
-        if count_true == predicted_true:
+        all_match = True
+        for index in range(8):
+            if label_check[index]==1:
+                all_match = False
+
+        if count_true == predicted_true and all_match:
             color = 'green'
         else:
             color = 'red'
 
         first, second, third, i, j, k = self.calculate_3_largest(predictions_array, 8)
         prediction = "{} {:2.0f}% \n".format(self.class_names[i], 100 * first)
-        if second > 0.1:
+        if second >= 0.5:
             prediction = prediction + "{} {:2.0f}% \n".format(self.class_names[j], 100 * second)
-        if third > 0.1:
+        if third >= 0.5:
             prediction = prediction + "{} {:2.0f}% \n".format(self.class_names[k], 100 * third)
         plt.xlabel("Predicted: {} Ground Truth: {}".format(prediction, ground), color=color)
 
@@ -267,6 +274,6 @@ class Plotter:
         plt.title('Confusion matrix')
         plt.ylabel('Actual label')
         plt.xlabel('Predicted label')
-        plt.savefig('image_run3' + test_run + '.png')
+        plt.savefig(test_run)
         plt.show()
         plt.close()

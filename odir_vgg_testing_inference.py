@@ -1,4 +1,4 @@
-# Copyright 2019 Jordi Corbilla. All Rights Reserved.
+# Copyright 2019-2020 Jordi Corbilla. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,18 +15,23 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import logging.config
+import os
+
 import tensorflow as tf
 from absl import app
+from tensorflow.keras.applications import vgg16
+
+import odir
 from odir_advance_plotting import Plotter
 from odir_kappa_score import FinalScore
-from odir_normalize_input import Normalizer
 from odir_predictions_writer import Prediction
-import odir
+
 
 def main(argv):
     print(tf.version.VERSION)
     image_size = 224
-    test_run = 'zC'
+    test_run = 'zCSA'
+    new_folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification'
 
     # load the data
     (x_train, y_train), (x_test, y_test) = odir.load_data(image_size, 1)
@@ -35,16 +40,15 @@ def main(argv):
 
     # plot data input
     plotter = Plotter(class_names)
-    plotter.plot_input_images(x_train, y_train)
+    plotter.plot_input_images(x_test, y_test)
 
     x_test_drawing = x_test
 
     # normalize input based on model
-    normalizer = Normalizer()
-    x_test = normalizer.normalize_vgg16(x_test)
+    x_test = vgg16.preprocess_input(x_test)
 
     # load one of the test runs
-    model = tf.keras.models.load_model(r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\modelvgg100.h5')
+    model = tf.keras.models.load_model(os.path.join(new_folder , 'modelvgg200.h5'))
     model.summary()
 
     # display the content of the model
@@ -63,7 +67,7 @@ def main(argv):
     prediction_writer.save_all(y_test)
 
     # show the final score
-    score = FinalScore()
+    score = FinalScore(new_folder)
     score.output()
 
     # plot output results

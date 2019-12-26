@@ -15,7 +15,7 @@
 import numpy as np
 
 
-def load_data(image_size, index = 0):
+def load_data(image_size, index = 0, challenge = 0):
     """Loads the ODIR dataset.
 
     Returns:
@@ -30,7 +30,11 @@ def load_data(image_size, index = 0):
         x_train = np.load('odir_training' + '_' + str(image_size) + '_' + str(index) + '.npy')
         y_train = np.load('odir_training_labels' + '_' + str(image_size) + '_' + str(index) + '.npy')
 
-    x_test = np.load('odir_testing'+'_' + str(image_size)+'.npy')
-    y_test = np.load('odir_testing_labels'+'_' + str(image_size)+'.npy')
+    if challenge == 0:
+        x_test = np.load('odir_testing'+'_' + str(image_size)+'.npy')
+        y_test = np.load('odir_testing_labels'+'_' + str(image_size)+'.npy')
+    else:
+        x_test = np.load('odir_testing_challenge'+'_' + str(image_size)+'.npy')
+        y_test = np.load('odir_testing_labels_challenge'+'_' + str(image_size)+'.npy')
 
     return (x_train, y_train), (x_test, y_test)

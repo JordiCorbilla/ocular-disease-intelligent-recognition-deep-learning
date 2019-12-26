@@ -24,13 +24,21 @@ import numpy as np
 import tensorflow as tf
 from absl import app
 
+from odir_advance_plotting import Plotter
+from odir_kappa_score import FinalScore
 from odir_model_factory import Factory, ModelTypes
 from odir_predictions_writer import Prediction
 
 os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 from sklearn import metrics
 import odir
+
+
+def generator(train_a, labels_a):
+    while True:
+        for i in range(len(train_a)):
+            yield train_a[i].reshape(1, 128, 128, 3), labels_a[i].reshape(1, 8)
 
 
 def main(argv):
@@ -43,72 +51,66 @@ def main(argv):
     x_train = (x_train - x_train.mean()) / x_train.std()
     x_test = (x_test - x_test.mean()) / x_test.std()
 
-    plt.figure(figsize=(9, 9))
-    for i in range(100):
-        plt.subplot(10, 10, i + 1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(x_train[i])
+    defined_metrics = [
+        tf.keras.metrics.BinaryAccuracy(name='accuracy'),
+        tf.keras.metrics.Precision(name='precision'),
+        tf.keras.metrics.Recall(name='recall'),
+        tf.keras.metrics.AUC(name='auc'),
+    ]
 
-    plt.subplots_adjust(bottom=0.04, right=0.94, top=0.95, left=0.06, wspace=0.20, hspace=0.17)
-    plt.show()
+    factory = Factory((image_size, image_size, 3), defined_metrics)
 
-    factory = Factory((image_size,image_size,3))
     model = factory.compile(ModelTypes.inception_v1)
+    class_names = ['Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertension', 'Myopia', 'Others']
 
+    # plot data input
+    plotter = Plotter(class_names)
     print("Training")
 
-    class_weight = { 0:1.,
-                    1:1.583802025,
-                    2:8.996805112,
-                    3:10.24,
-                    4:10.05714286,
-                    5:14.66666667,
-                    6:10.7480916,
-                    7:2.505338078 }
+    class_weight = {0: 1.,
+                    1: 1.583802025,
+                    2: 8.996805112,
+                    3: 10.24,
+                    4: 10.05714286,
+                    5: 14.66666667,
+                    6: 10.7480916,
+                    7: 2.505338078}
 
-    history = model.fit(x_train, y_train, epochs=30,batch_size=32,verbose=1,shuffle=True,
-                        validation_data=(x_test, y_test), class_weight=class_weight)
+    callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, mode='min', verbose=1)
 
+    history = model.fit_generator(generator=generator(x_train, y_train), steps_per_epoch=len(x_train),
+                                  epochs=30, verbose=1, callbacks=[callback], validation_data=(x_test, y_test),
+                                  shuffle=True)
+
+    print("plotting")
+    plotter.plot_metrics(history, 'inception_1', 2)
+    print("saving")
+    model.save('model_inception_30.h5')
+
+    # Hide meanwhile for now
     plt.plot(history.history['accuracy'], label='accuracy')
     plt.plot(history.history['val_accuracy'], label='val_accuracy')
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
     plt.legend(loc='lower right')
+    plt.savefig('image_run2' + 'inception_1' + '.png')
     plt.show()
 
     test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
     print(test_acc)
 
-    predictions = model.predict(x_test)
+    test_predictions_baseline = model.predict(x_test)
+    plotter.plot_confusion_matrix_generic(y_test, test_predictions_baseline, 'inception_1', 0)
 
-    def odir_metrics(gt_data, pr_data):
-        th = 0.5
-        gt = gt_data.flatten()
-        pr = pr_data.flatten()
-        kappa = metrics.cohen_kappa_score(gt, pr > th)
-        f1 = metrics.f1_score(gt, pr > th, average='micro')
-        auc = metrics.roc_auc_score(gt, pr)
-        final_score = (kappa + f1 + auc) / 3.0
-        return kappa, f1, auc, final_score
-
-    def import_data(filepath):
-        with open(filepath, 'r') as f:
-            reader = csv.reader(f)
-            header = next(reader)
-            pr_data = [[int(row[0])] + list(map(float, row[1:])) for row in reader]
-        pr_data = np.array(pr_data)
-        return pr_data
-
-    prediction_writer = Prediction(predictions, 400)
+    # save the predictions
+    prediction_writer = Prediction(test_predictions_baseline, 400)
     prediction_writer.save()
     prediction_writer.save_all(y_test)
 
-    gt_data = import_data('odir_ground_truth.csv')
-    pr_data = import_data('odir_predictions.csv')
-    kappa, f1, auc, final_score = odir_metrics(gt_data[:, 1:], pr_data[:, 1:])
-    print("kappa score:", kappa, " f-1 score:", f1, " AUC vlaue:", auc, " Final Score:", final_score)
+    # show the final score
+    score = FinalScore()
+    score.output()
+
 
 if __name__ == '__main__':
     # create logger

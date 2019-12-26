@@ -298,24 +298,27 @@ class NumpyDataGenerator:
         # for example (6069 * 28 * 28 * 3)-> (6069 x 2352) (14,274,288)
         training = np.reshape(training, [training.shape[0], training.shape[1], training.shape[2], training.shape[3]])
 
-        training_2 = np.array(training_2, dtype='uint8')
-        training_labels_2 = np.array(training_labels_2, dtype='uint8')
         # convert (number of images x height x width x number of channels) to (number of images x (height * width *3))
         # for example (6069 * 28 * 28 * 3)-> (6069 x 2352) (14,274,288)
-        training_2 = np.reshape(training_2, [training_2.shape[0], training_2.shape[1], training_2.shape[2], training_2.shape[3]])
+        if include_augmented:
+            training_2 = np.array(training_2, dtype='uint8')
+            training_labels_2 = np.array(training_labels_2, dtype='uint8')
+            training_2 = np.reshape(training_2, [training_2.shape[0], training_2.shape[1], training_2.shape[2], training_2.shape[3]])
 
         self.logger.debug(testing.shape)
         self.logger.debug(testing_labels.shape)
         self.logger.debug(training.shape)
         self.logger.debug(training_labels.shape)
-        self.logger.debug(training_2.shape)
-        self.logger.debug(training_labels_2.shape)
+        if include_augmented:
+            self.logger.debug(training_2.shape)
+            self.logger.debug(training_labels_2.shape)
 
         # save numpy array as .npy formats
         np.save(file_name_training + '_1', training)
         np.save(file_name_training_labels + '_1', training_labels)
-        np.save(file_name_training + '_2', training_2)
-        np.save(file_name_training_labels + '_2', training_labels_2)
+        if include_augmented:
+            np.save(file_name_training + '_2', training_2)
+            np.save(file_name_training_labels + '_2', training_labels_2)
         self.logger.debug("Closing CSV file")
         for sickness in class_names:
             self.logger.debug('found ' + sickness + ' ' + str(class_count[sickness]))
@@ -334,24 +337,24 @@ def main(argv):
     augmented_path = r'C:\temp\ODIR-5K_Training_Dataset_augmented' + '_' + str(image_width)
     csv_file = r'ground_truth\odir.csv'
     csv_augmented_file = r'ground_truth\odir_augmented.csv'
-    training_file = 'ground_truth\XYZ_ODIR.csv'
+    training_file = r'ground_truth\testing_default_value.csv'
     logger.debug('Generating npy files')
     generator = NumpyDataGenerator(training_path, testing_path, csv_file, training_file, augmented_path,
                                    csv_augmented_file)
 
     # Generate testing file
-    # generator.npy_testing_files('odir_testing', 'odir_testing_labels')
+    generator.npy_testing_files('odir_testing_challenge' + '_' + str(image_width), 'odir_testing_labels_challenge' + '_' + str(image_width))
 
     # Generate training file
     # generator.npy_training_files('odir_training', 'odir_training_labels')
     # generator.npy_training_files_split(1000, 'odir_training',
     # 'odir_training_labels', 'odir_testing', 'odir_testing_labels')
 
-    generator.npy_training_files_split_all(400, 'odir_training' + '_' + str(image_width),
-                                           'odir_training_labels' + '_' + str(image_width),
-                                           'odir_testing' + '_' + str(image_width),
-                                           'odir_testing_labels' + '_' + str(image_width),
-                                           True)
+    # generator.npy_training_files_split_all(400, 'odir_training' + '_' + str(image_width),
+    #                                        'odir_training_labels' + '_' + str(image_width),
+    #                                        'odir_testing' + '_' + str(image_width),
+    #                                        'odir_testing_labels' + '_' + str(image_width),
+    #                                        True)
     end = time.time()
     logger.debug('Training Records ' + str(generator.total_records_training))
     logger.debug('Testing Records ' + str(generator.total_records_testing))

@@ -33,13 +33,13 @@ def main(argv):
     new_folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\test_run\f8d2c2657e3ea7a8307fcd635cb14c2f'
 
     # load the data
-    (x_train, y_train), (x_test, y_test) = odir.load_data(image_size, 1)
+    (x_train, y_train), (x_test, y_test) = odir.load_data(image_size, 1, 1)
 
     class_names = ['Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertension', 'Myopia', 'Others']
 
     # plot data input
     plotter = Plotter(class_names)
-    plotter.plot_input_images(x_train, y_train)
+    plotter.plot_input_images(x_test, y_test)
 
     x_test_drawing = x_test
 

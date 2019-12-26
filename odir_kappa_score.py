@@ -13,11 +13,17 @@
 # limitations under the License.
 # ==============================================================================
 import csv
+import os
+
 import numpy as np
 from sklearn import metrics
 
 
 class FinalScore:
+    def __init__(self, new_folder):
+        self.new_folder = new_folder
+
+
     def odir_metrics(self, gt_data, pr_data):
         th = 0.5
         gt = gt_data.flatten()
@@ -37,8 +43,8 @@ class FinalScore:
         return pr_data
 
     def output(self):
-        gt_data = self.import_data('odir_ground_truth.csv')
-        pr_data = self.import_data('odir_predictions.csv')
+        gt_data = self.import_data(os.path.join(self.new_folder, 'odir_ground_truth.csv'))
+        pr_data = self.import_data(os.path.join(self.new_folder, 'odir_predictions.csv'))
         kappa, f1, auc, final_score = self.odir_metrics(gt_data[:, 1:], pr_data[:, 1:])
         print("Kappa score:", kappa)
         print("F-1 score:", f1)

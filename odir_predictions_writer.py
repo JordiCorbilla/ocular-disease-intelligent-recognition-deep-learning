@@ -13,12 +13,14 @@
 # limitations under the License.
 # ==============================================================================
 import csv
+import os
 
 
 class Prediction:
-    def __init__(self, prediction, num_images_test):
+    def __init__(self, prediction, num_images_test, folder = ""):
         self.prediction = prediction
         self.num_images_test = num_images_test
+        self.folder = folder
 
     def save(self):
         """Generate a CSV that contains the output of all the classes.
@@ -29,7 +31,11 @@ class Prediction:
         """
         # The process here is to generate a CSV file with the content of the data annotations file
         # and also the total of labels per eye. This will help us later to process the images
-        with open('predictions.csv', 'w', newline='') as csv_file:
+        if self.folder != "":
+            folder_to_save = os.path.join(self.folder, 'predictions.csv')
+        else:
+            folder_to_save = 'predictions.csv'
+        with open(folder_to_save, 'w', newline='') as csv_file:
             file_writer = csv.writer(csv_file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             file_writer.writerow(['ID', 'Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertension', 'Myopia', 'Others'])
             count = 0
@@ -54,7 +60,11 @@ class Prediction:
         """
         # The process here is to generate a CSV file with the content of the data annotations file
         # and also the total of labels per eye. This will help us later to process the images
-        with open('odir_predictions.csv', 'w', newline='') as csv_file:
+        if self.folder != "":
+            folder_to_save = os.path.join(self.folder, 'odir_predictions.csv')
+        else:
+            folder_to_save = 'odir_predictions.csv'
+        with open(folder_to_save, 'w', newline='') as csv_file:
             file_writer = csv.writer(csv_file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             file_writer.writerow(['ID', 'N', 'D', 'G', 'C', 'A', 'H', 'M', 'O'])
             count = 0
@@ -70,7 +80,11 @@ class Prediction:
                 file_writer.writerow([count, normal, diabetes, glaucoma, cataract, amd, hypertension, myopia, others])
                 count = count + 1
 
-        with open('odir_ground_truth.csv', 'w', newline='') as csv_file:
+        if self.folder != "":
+            folder_to_save = os.path.join(self.folder, 'odir_ground_truth.csv')
+        else:
+            folder_to_save = 'odir_ground_truth.csv'
+        with open(folder_to_save, 'w', newline='') as csv_file:
             file_writer = csv.writer(csv_file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             file_writer.writerow(['ID', 'N', 'D', 'G', 'C', 'A', 'H', 'M', 'O'])
             count = 0

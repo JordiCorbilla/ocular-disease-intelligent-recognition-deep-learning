@@ -31,7 +31,7 @@ def main(argv):
     print(tf.version.VERSION)
     image_size = 224
     test_run = 'zCSA'
-    new_folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification'
+    new_folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\test_run\603785de2ee73f1aac21bf022b6a81d6'
 
     # load the data
     (x_train, y_train), (x_test, y_test) = odir.load_data(image_size, 1)
@@ -48,7 +48,7 @@ def main(argv):
     x_test = vgg16.preprocess_input(x_test)
 
     # load one of the test runs
-    model = tf.keras.models.load_model(os.path.join(new_folder , 'modelvgg200.h5'))
+    model = tf.keras.models.load_model(os.path.join(new_folder , 'model_weights.h5'))
     model.summary()
 
     # display the content of the model

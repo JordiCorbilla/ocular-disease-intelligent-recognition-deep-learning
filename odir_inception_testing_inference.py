@@ -19,12 +19,12 @@ import os
 
 import tensorflow as tf
 from absl import app
+from keras_applications.inception_v3 import keras_utils
 from tensorflow.keras.applications import inception_v3
 import odir
 from odir_advance_plotting import Plotter
 from odir_kappa_score import FinalScore
 from odir_predictions_writer import Prediction
-
 
 def main(argv):
     print(tf.version.VERSION)
@@ -33,7 +33,7 @@ def main(argv):
     new_folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\test_run\f8d2c2657e3ea7a8307fcd635cb14c2f'
 
     # load the data
-    (x_train, y_train), (x_test, y_test) = odir.load_data(image_size, 1, 1)
+    (x_train, y_train), (x_test, y_test) = odir.load_data(image_size, 1)
 
     class_names = ['Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertension', 'Myopia', 'Others']
 

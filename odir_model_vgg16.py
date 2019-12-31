@@ -14,8 +14,7 @@
 # ==============================================================================
 import tensorflow
 from tensorflow.keras import models, layers
-from tensorflow.python.keras.optimizers import SGD
-
+from tensorflow.keras.optimizers import SGD
 from odir_model_base import ModelBase
 
 
@@ -110,8 +109,8 @@ class Vgg16(ModelBase):
         # Add new dense layer
         x.add(layers.Dense(8, activation='sigmoid'))
         #optimizer = tensorflow.keras.optimizers.SGD(learning_rate=1e-3)
-        #sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
-        x.compile(optimizer='adam', loss='binary_crossentropy', metrics=self.metrics)
+        sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
+        x.compile(optimizer=sgd, loss='binary_crossentropy', metrics=self.metrics)
 
         self.show_summary(x)
         self.plot_summary(x, 'model_vggnet.png')

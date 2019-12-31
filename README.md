@@ -28,9 +28,9 @@ c:\temp\ODIR-5K_Training_Dataset_treated
 run the following command to treat the training and validation images:
 
 ```cmd
->python odir_image_crop_job.py
->python odir_image_training_treatment_job.py
->python odir_image_testing_treatment_job.py
+python odir_image_crop_job.py
+python odir_image_training_treatment_job.py
+python odir_image_testing_treatment_job.py
 ```
 
 ## Image to tf.Data conversion and .npy storage
@@ -38,7 +38,7 @@ run the following command to treat the training and validation images:
 run the following command to generate the dataset for training and validation:
 
 ```cmd
->python odir_image_crop_job.py
+python odir_image_crop_job.py
 ```
 
 ```cmd

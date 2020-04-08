@@ -8,6 +8,26 @@
 ## Keywords:
 Image classification, Deep learning, Retinography, Convolutional neural networks, Eye diseases, Medical imaging analysis.
 
+## Pathologies:
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/pathologies.png)
+
+## Deep learning architecture:
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)
+
+## Training Details:
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/trainingdetails.png)
+
+## Model Comparison:
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/modelcomparison.png)
+
+## Confusion matrix:
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/ConfusionMatrix.png)
+
+## Classification Output:
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/classificationoutput.png)
+
+## Implementation Details:
+
 ### Works on:
 [tensorflow-2.0](https://github.com/tensorflow/tensorflow) - use branch `master`
 
@@ -15,7 +35,7 @@ All the training images must be in JPEG format.
 
 ### Usage
 
-## Image Treatment Process
+#### Image Treatment Process
 
 Place all the files in the following folders (Training and Validation images):
 
@@ -41,7 +61,7 @@ python odir_image_training_treatment_job.py
 python odir_image_testing_treatment_job.py
 ```
 
-## Image to tf.Data conversion and .npy storage
+#### Image to tf.Data conversion and .npy storage
 
 run the following command to generate the dataset for training and validation:
 

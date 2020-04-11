@@ -1,6 +1,6 @@
 # Ocular Disease Intelligent Recognition Through Deep Learning Architectures
 
-This repository contains Jordi Corbilla's Msc dissertation, Consensus: Ocular Disease Intelligent recognition through deep learning architectures, published by Universitat Oberta de Catalunya in 2020. The dissertation PDFs and the dissertation sources are licensed under the Creative Commons Attribution license, as described in the LICENSE file.
+This repository contains Jordi Corbilla's Msc dissertation: Ocular Disease Intelligent recognition through deep learning architectures, published by Universitat Oberta de Catalunya in 2020. The dissertation PDFs and the dissertation sources are licensed under the Creative Commons Attribution license, as described in the LICENSE file.
 
 ## Abstract
 <div style="text-align: justify">Retinal pathologies are the most common cause of childhood blindness worldwide. Rapid and automatic detection of diseases is critical and urgent in reducing the ophthalmologist's workload. Ophthalmologists diagnose diseases based on pattern recognition through direct or indirect visualization of the eye and its surrounding structures. Dependence on the fundus of the eye and its analysis make the field of ophthalmology perfectly suited to benefit from deep learning algorithms. Each disease has different stages of severity that can be deduced by verifying the existence of specific lesions and each lesion is characterized by certain morphological features where several lesions of different pathologies have similar characteristics. We note that patients may be simultaneously affected by various pathologies, and consequently, the detection of eye diseases has a multi-label classification with a complex resolution principle.</div>
@@ -12,6 +12,12 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ## Pathologies:
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/pathologies.png)
+
+According to 2010 World Health Organization data: There are more than 39 million blind people where 80% of them could have been prevented! This lack of prevention is especially true in developing countries where cataract is still the highest with 51% globally.
+
+The current standard for the classification of diseases based on fundus photography, includes a manual estimation of injury locations  and an analysis of their severity, which requires a lot of time by the ophthalmologist, also incurring high costs in the healthcare system. Therefore, it would be important to have automated methods for performing the analysis.
+
+Rapid and automatic detection of diseases is critical and urgent in reducing the ophthalmologist's workload.
 
 ## Deep learning architecture:
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)

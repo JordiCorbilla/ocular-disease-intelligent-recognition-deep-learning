@@ -59,6 +59,10 @@ As for the VGG, we can see how the data is a bit more scattered but we also have
 ## Classification Output:
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/classificationoutput.png)
 
+Finally we can see the output that each model generates and where we can visually check the classification result towards its ground truth. With this work, all the code related to the training and validation of the data, as well as the inference check to validate the output of the models, are delivered in this repo.
+
+We can see, then, that the two models have the same classification for the same image, but if we analyze in detail the response of each output we can see that it is quite different.
+
 ## Implementation Details:
 
 ### Works on:

@@ -113,4 +113,4 @@ python.exe odir_runner.py
 Put all the training images under dataset folder.
 
 #### License
-Apache License, Version 2.0
+Creative Commons Attribution-NonCommercial 4.0 International Public License

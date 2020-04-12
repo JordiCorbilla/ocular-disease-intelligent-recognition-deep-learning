@@ -22,6 +22,17 @@ Rapid and automatic detection of diseases is critical and urgent in reducing the
 ## Deep learning architecture:
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)
 
+What is our methodology?
+
+The dataset is first studied and its decomposition is placed correctly into different pathologies.
+
+The images are then thoroughly analyzed and algorithms are generated for processing, which each network is capable of accepting. Here we get the ground truth and the final set of images to use.
+
+A data augmentation module is also added to offset the imbalance found in the data set.
+
+We generates data vectors that each model can consume and deep learning networks are trained through different experiments to provide image classification into 8 groups. The size of images and conversion blocks may vary in different applications. Convolutional layers try to extract relevant image features while reducing their dimensionality. The Sigmoid layer is responsible for the decision-making aspect of the network.
+Finally, the different results from the experiments are generated and compared. This is the flowchart we created and describes in detail the different parts that make up this work.
+
 ## Training Details:
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/trainingdetails.png)
 

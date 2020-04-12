@@ -65,6 +65,9 @@ We can see, then, that the two models have the same classification for the same 
 
 ## Implementation Details:
 
+### Dataset:
+The Dataset is part of the ODIR 2019 Grand Challenge. In order to use the data you need to register and download it from there: https://odir2019.grand-challenge.org/introduction/
+
 ### Works on:
 [tensorflow-2.0](https://github.com/tensorflow/tensorflow) - use branch `master`
 

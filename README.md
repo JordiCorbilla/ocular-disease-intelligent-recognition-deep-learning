@@ -75,7 +75,7 @@ The Dataset is part of the ODIR 2019 Grand Challenge. In order to use the data y
 
 [tensorflow-2.0](https://github.com/tensorflow/tensorflow) - use branch `master`
 
-The full list of packages use can be seen below:
+The full list of packages used can be seen below:
 ```
 - tensorboard-2.0.0
 - tensorflow-2.0.0
@@ -106,7 +106,7 @@ All the training images must be in JPEG format.
 
 ### Usage
 
-#### Image Treatment Process
+#### 1) Image Treatment Process
 
 Place all the files in the following folders (Training and Validation images):
 
@@ -119,9 +119,13 @@ Create the following folders:
 
 ```cmd
 c:\temp\ODIR-5K_Testing_Images_cropped
-c:\temp\ODIR-5K_Testing_Images_treated
+c:\temp\ODIR-5K_Testing_Images_treated_128
+c:\temp\ODIR-5K_Testing_Images_treated_224
 c:\temp\ODIR-5K_Training_Dataset_cropped
-c:\temp\ODIR-5K_Training_Dataset_treated
+c:\temp\ODIR-5K_Training_Dataset_treated_128
+c:\temp\ODIR-5K_Training_Dataset_treated_224
+c:\temp\ODIR-5K_Training_Dataset_augmented_128
+c:\temp\ODIR-5K_Training_Dataset_augmented_224
 ```
 
 run the following command to treat the training and validation images:
@@ -132,7 +136,7 @@ python odir_image_training_treatment_job.py
 python odir_image_testing_treatment_job.py
 ```
 
-#### Image to tf.Data conversion and .npy storage
+#### 2) Image to tf.Data conversion and .npy storage
 
 run the following command to generate the dataset for training and validation:
 

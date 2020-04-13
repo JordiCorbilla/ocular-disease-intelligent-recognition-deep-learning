@@ -141,14 +141,40 @@ python odir_image_testing_treatment_job.py
 run the following command to generate the dataset for training and validation:
 
 ```cmd
-python odir_image_crop_job.py
+python.exe odir_patients_to_numpy.py
 ```
+
+#### 3) Data Augmentation
+
+run the following command to generate the additional images:
 
 ```cmd
-python.exe odir_runner.py
+python.exe odir_data_augmentation_runner.py
 ```
 
-Put all the training images under dataset folder.
+#### 4) Run Inception
+
+```cmd
+python.exe odir_inception_training.py
+```
+
+#### 5) Run VGG
+
+```cmd
+python.exe odir_vgg_training.py
+```
+
+#### 6) Inception Inference
+
+```cmd
+python.exe odir_inception_testing_inference.py
+```
+
+#### 7) VGG Inference
+
+```cmd
+python.exe odir_vgg_testing_inference.py
+```
 
 #### License
 Creative Commons Attribution-NonCommercial 4.0 International Public License

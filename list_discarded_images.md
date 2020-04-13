@@ -1,5 +1,5 @@
 # List of discarded images
-| Fundus         | Discard Option                        | Fundus         | Discard Option    |
+| Fundus         | Discard Reason                        | Fundus         | Discard Reason    |
 |----------------|---------------------------------------|----------------|-------------------|
 | 20_right.jpg   | Lens Dust                             | 2450_left.jpg  | Lens Dust         |
 | 36_left.jpg    | Lens Dust                             | 2450_right.jpg | Lens Dust         |

@@ -69,9 +69,37 @@ We can see, then, that the two models have the same classification for the same 
 ### Dataset:
 The Dataset is part of the ODIR 2019 Grand Challenge. In order to use the data you need to register and download it from there: https://odir2019.grand-challenge.org/introduction/
 
-### Works on:
+### Works on Python 3.6:
+
 [tensorflow-2.0](https://github.com/tensorflow/tensorflow) - use branch `master`
 
+The full list of packages use can be seen below:
+```
+- tensorboard-2.0.0
+- tensorflow-2.0.0
+- tensorflow-estimator-2.0.1
+- tensorflow-gpu-2.0
+- matplotlib-3.1.1
+- keras-applications-1.0.8
+- keras-preprocessing-1.0.5
+- opencv-python-4.1.1.26
+- django-2.2.6
+- image-1.5.27
+- pillow-6.2.0
+- sqlparse-0.3.0
+- IPython-7.8.0
+- keras-2.3.1
+- scikit-learn-0.21.3
+- pydot-1.4.1
+- graphviz-0.13.2
+- pylint-2.4.4
+- imbalanced-learn-0.5.0
+- seaborn-0.9.0
+- scikit-image-0.16.2
+- pandas-0.25.1
+- numpy 1.17.2
+- scipy-1.3.1
+```
 All the training images must be in JPEG format.
 
 ### Usage

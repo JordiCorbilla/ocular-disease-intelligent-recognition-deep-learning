@@ -66,6 +66,12 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 <p align="justify">We can see, then, that the two models have the same classification for the same image, but if we analyze in detail the response of each output we can see that it is quite different.</p>
 
+## Conclusions:
+- This project studies two deep learning models for the multiple classification of diseases.
+- There is added complexity due to the multi-label and the initial data imbalance.
+- We have seen that after the fine-tuning of the experiments we are able to obtain 60% accuracy on the validation set.
+- The scenario is set for future applications, where the model could support the ophthalmologist during the capture of the fundus, and thus to classify pathologies faster.
+
 ## Implementation Details:
 
 ### Dataset:

@@ -157,13 +157,25 @@ The second job will perform the resize and squaring functionality to 224 pixels 
 
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/squareimages.png)
 
-#### 2) Image to tf.Data conversion and .npy storage
+#### 2) Data Augmentation (if you don't want to use this step you can skip it)
+
+run the following command to generate the additional images:
+
+```cmd
+python.exe odir_data_augmentation_runner.py
+```
+
+This will generate the **odir_augmented.csv** file.
+
+#### 3) Image to tf.Data conversion and .npy storage
 
 Now that we have all the images. We need to translate them into a td.Data component so we can load them into our model. Run the following command to generate the dataset for training and validation:
 
 ```cmd
 python.exe odir_patients_to_numpy.py
 ```
+
+Note that any changes in the images will need a re-run of this script to rebuild the .npy files.
 
 If you take a look at the arguments of the script you will see the following:
 
@@ -182,14 +194,6 @@ training_file = r'ground_truth\testing_default_value.csv'
 **odir_augmented.csv** contains the generated ground truth per eye and sample of the data augmentation process generator. This makes things easier when trying to feed this into the model and compare the results.
 
 **testing_default_value.csv** contains the vectors of the testing images.
-
-#### 3) Data Augmentation
-
-run the following command to generate the additional images:
-
-```cmd
-python.exe odir_data_augmentation_runner.py
-```
 
 #### 4) Run Inception
 

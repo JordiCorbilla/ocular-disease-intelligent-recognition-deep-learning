@@ -16,8 +16,6 @@ from absl import app
 import logging
 import logging.config
 import time
-
-from odir_patients_to_tfrecord import GenerateTFRecord
 from odir_training_data_parser import DataParser
 
 
@@ -51,8 +49,8 @@ def main(argv):
     images_path = r'C:\temp\ODIR-5K_Training_Dataset_treated'
     # With treated images we reduce the TFRecord size from 91,117,187,072 bytes
     # to 98,721,792 bytes, 99.89% reduction
-    generator = GenerateTFRecord(images_path)
-    generator.patients_to_tfrecord(patients, 'images.tfrecord')
+    #generator = GenerateTFRecord(images_path)
+    #generator.patients_to_tfrecord(patients, 'images.tfrecord')
     end = time.time()
     logger.debug('All Done in ' + str(end - start) + ' seconds')
 

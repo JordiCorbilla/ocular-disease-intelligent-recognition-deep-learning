@@ -168,14 +168,20 @@ python.exe odir_patients_to_numpy.py
 If you take a look at the arguments of the script you will see the following:
 
 ```python
-    image_width = 224
-    training_path = r'C:\temp\ODIR-5K_Training_Dataset_treated' + '_' + str(image_width)
-    testing_path = r'C:\temp\ODIR-5K_Testing_Images_treated' + '_' + str(image_width)
-    augmented_path = r'C:\temp\ODIR-5K_Training_Dataset_augmented' + '_' + str(image_width)
-    csv_file = r'ground_truth\odir.csv'
-    csv_augmented_file = r'ground_truth\odir_augmented.csv'
-    training_file = r'ground_truth\testing_default_value.csv'
+image_width = 224
+training_path = r'C:\temp\ODIR-5K_Training_Dataset_treated' + '_' + str(image_width)
+testing_path = r'C:\temp\ODIR-5K_Testing_Images_treated' + '_' + str(image_width)
+augmented_path = r'C:\temp\ODIR-5K_Training_Dataset_augmented' + '_' + str(image_width)
+csv_file = r'ground_truth\odir.csv'
+csv_augmented_file = r'ground_truth\odir_augmented.csv'
+training_file = r'ground_truth\testing_default_value.csv'
 ```
+
+**odir.csv** file contains the generated ground truth per eye. To generate the ground truth, you can take a look at odir_runner.py which contains the different procedures to generate the ground truth based on the ODIR-5K_Training_Annotations(Updated)_V2.xlsx file which is part of the provided file by ODIR.
+
+**odir_augmented.csv** contains the generated ground truth per eye and sample of the data augmentation process generator. This makes things easier when trying to feed this into the model and compare the results.
+
+**testing_default_value.csv** contains the vectors of the testing images.
 
 #### 3) Data Augmentation
 

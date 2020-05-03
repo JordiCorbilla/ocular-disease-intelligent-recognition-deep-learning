@@ -120,8 +120,11 @@ Place all the files in the following folders (Training and Validation images):
 c:\temp\ODIR-5K_Training_Dataset
 c:\temp\ODIR-5K_Testing_Images
 ```
+The training images Dataset should contain 7000 images and the testing Dataset 1000 images. Below is a screenshot of the images in the training dataset folder:
 
-Create the following folders:
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/dataset.png)
+
+Then, create the following folders:
 
 ```cmd
 c:\temp\ODIR-5K_Testing_Images_cropped
@@ -138,9 +141,14 @@ run the following command to treat the training and validation images:
 
 ```cmd
 python odir_image_crop_job.py
+python odir_image_testing_crop_job.py
 python odir_image_training_treatment_job.py
 python odir_image_testing_treatment_job.py
 ```
+
+The odir_image_crop_job.py job will treat all the Training Dataset images and remove the black area of the images so the images end up like in the image below (same job for the odir_image_testing_crop_job.py which will act upon the training images):
+
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/cropped.png)
 
 #### 2) Image to tf.Data conversion and .npy storage
 

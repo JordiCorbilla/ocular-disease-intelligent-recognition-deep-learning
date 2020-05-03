@@ -140,22 +140,41 @@ c:\temp\ODIR-5K_Training_Dataset_augmented_224
 run the following command to treat the training and validation images:
 
 ```cmd
+//These two remove the black pixels
 python odir_image_crop_job.py
 python odir_image_testing_crop_job.py
-python odir_image_training_treatment_job.py
-python odir_image_testing_treatment_job.py
+
+//These two resize the images to 224 pixels
+python odir_training_image_treatment_job.py
+python odir_testing_image_treatment_job.py
 ```
 
 The odir_image_crop_job.py job will treat all the Training Dataset images and remove the black area of the images so the images end up like in the image below (same job for the odir_image_testing_crop_job.py which will act upon the training images):
 
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/cropped.png)
 
+The second job will perform the resize and squaring functionality to 224 pixels x 224 pixels. The parameters image_width and keep_aspect_ratio variables can be edited in the python file to test different values/scenarios. This should give you images like the ones below:
+
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/squareimages.png)
+
 #### 2) Image to tf.Data conversion and .npy storage
 
-run the following command to generate the dataset for training and validation:
+Now that we have all the images. We need to translate them into a td.Data component so we can load them into our model. Run the following command to generate the dataset for training and validation:
 
 ```cmd
 python.exe odir_patients_to_numpy.py
+```
+
+If you take a look at the arguments of the script you will see the following:
+
+```python
+    image_width = 224
+    training_path = r'C:\temp\ODIR-5K_Training_Dataset_treated' + '_' + str(image_width)
+    testing_path = r'C:\temp\ODIR-5K_Testing_Images_treated' + '_' + str(image_width)
+    augmented_path = r'C:\temp\ODIR-5K_Training_Dataset_augmented' + '_' + str(image_width)
+    csv_file = r'ground_truth\odir.csv'
+    csv_augmented_file = r'ground_truth\odir_augmented.csv'
+    training_file = r'ground_truth\testing_default_value.csv'
 ```
 
 #### 3) Data Augmentation

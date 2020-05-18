@@ -208,7 +208,7 @@ Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease
 -- Enhanced Run of the model using Data Augmentation
 python.exe odir_inception_training.py
 ```
-Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_enhanced/inception_enhanced.md)
+Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_advanced/inception_advanced.md)
 
 
 #### 5) Run VGG
@@ -223,7 +223,7 @@ Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease
 -- Enhanced Run of the model using Data Augmentation
 python.exe odir_vgg_training.py
 ```
-Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_enhanced/vgg_enhanced.md)
+Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_advanced/vgg_advanced.md)
 
 
 #### 6) Inception Inference

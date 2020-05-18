@@ -204,6 +204,10 @@ python.exe odir_inception_training.py
 #### 5) Run VGG
 
 ```cmd
+-- Basic Run of the model
+python.exe odir_vgg_training_basic.py
+-- Sample output can be seen here: 
+-- Enhanced Run of the model using Data Augmentation
 python.exe odir_vgg_training.py
 ```
 

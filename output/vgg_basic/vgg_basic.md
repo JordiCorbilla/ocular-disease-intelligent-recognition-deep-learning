@@ -1,3 +1,4 @@
+## Execution Output
 ```
 C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification>python odir_vgg_training_basic.py
 2020-05-18 08:14:36.648073: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
@@ -127,3 +128,14 @@ F-1 score: 0.8775
 AUC value: 0.7914375
 Final Score: 0.6558950879546809
 ```
+
+## Plots
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg_basic/plot1.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg_basic/plot2.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg_basic/plot3.png)
+
+## Ground Truth
+https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_basic/odir_ground_truth.csv
+
+## Output Predictions
+https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_basic/odir_predictions.csv

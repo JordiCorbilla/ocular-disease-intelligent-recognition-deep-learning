@@ -1,3 +1,4 @@
+```
 C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification>python odir_vgg_training_basic.py
 2020-05-18 08:04:17.408628: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
 2020-05-18 08:05:23.281828: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
@@ -81,3 +82,4 @@ Relying on driver to perform ptx compilation. This message will be only logged o
 2020-05-18 08:12:08.171633: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.55GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
 2020-05-18 08:12:09.430930: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.34GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
 2020-05-18 08:12:10.675397: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.28GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+```

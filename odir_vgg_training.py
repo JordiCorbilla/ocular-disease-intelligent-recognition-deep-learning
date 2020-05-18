@@ -16,6 +16,7 @@ import os
 from collections import Sequence
 
 import tensorflow as tf
+from odir_model_factory import Factory, ModelTypes
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications import resnet50, inception_v3, vgg16
 from tensorflow.keras.models import Model
@@ -26,6 +27,7 @@ import numpy as np
 import secrets
 import odir
 from advanced_pipeline import normalize_vgg16
+from tensorflow.keras.applications import vgg16
 from odir_advance_plotting import Plotter
 from odir_kappa_score import FinalScore
 from odir_predictions_writer import Prediction
@@ -33,7 +35,7 @@ import matplotlib.pyplot as plt
 
 batch_size = 32
 num_classes = 8
-epochs = 30
+epochs = 50
 
 
 class Generator(Sequence):
@@ -74,22 +76,6 @@ newfolder = os.path.join(folder, token)
 if not os.path.exists(newfolder):
     os.makedirs(newfolder)
 
-base_model = inception_v3.InceptionV3
-
-base_model = base_model(weights='imagenet', include_top=False)
-x = base_model.output
-x = GlobalAveragePooling2D()(x)
-x = Dense(1024, activation='relu')(x)
-predictions = Dense(num_classes, activation='sigmoid')(x)
-model = Model(inputs=base_model.input, outputs=predictions)
-# model.summary()
-
-tf.keras.utils.plot_model(model, to_file=os.path.join(newfolder, 'model_inception_v1.png'), show_shapes=True, show_layer_names=True)
-
-
-#for layer in base_model.layers:
-#    layer.trainable = False
-
 defined_metrics = [
     tf.keras.metrics.BinaryAccuracy(name='accuracy'),
     tf.keras.metrics.Precision(name='precision'),
@@ -97,41 +83,24 @@ defined_metrics = [
     tf.keras.metrics.AUC(name='auc'),
 ]
 
-model.compile(loss='binary_crossentropy',
-              optimizer=Adam(lr=0.001),
-              metrics=defined_metrics)
+factory = Factory((224, 224, 3), defined_metrics)
+model = factory.compile(ModelTypes.vgg16)
 
 (x_train, y_train), (x_test, y_test) = odir.load_data(224, 1)
 (x_train2, y_train2), (x_test, y_test) = odir.load_data(224, 2)
 
 x_test_drawing = x_test
 
-x_train = inception_v3.preprocess_input(x_train)
-x_train2 = inception_v3.preprocess_input(x_train2)
-x_test = inception_v3.preprocess_input(x_test)
+x_train = vgg16.preprocess_input(x_train)
+x_train2 = vgg16.preprocess_input(x_train2)
+x_test = vgg16.preprocess_input(x_test)
 
-#print(model.evaluate(x_train, y_train, batch_size=batch_size, verbose=0))
 class_names = ['Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertension', 'Myopia', 'Others']
 
 # plot data input
 plotter = Plotter(class_names)
 
-callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, mode='min', verbose=1)
-
-# class_weight = {0: 1.,
-#                     1: 1.583802025,
-#                     2: 8.996805112,
-#                     3: 10.24,
-#                     4: 10.05714286,
-#                     5: 14.66666667,
-#                     6: 10.7480916,
-#                     7: 2.505338078} , class_weight=class_weight
-
-# history = model.fit(x_train, y_train,
-#           epochs=100,
-#           batch_size=batch_size,
-#           shuffle=True,
-#           validation_data=(x_test, y_test), callbacks=[callback])
+callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=8, mode='min', verbose=1)
 
 train_datagen = Generator(x_train, y_train, batch_size)
 

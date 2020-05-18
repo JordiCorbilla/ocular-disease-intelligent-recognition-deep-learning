@@ -198,7 +198,13 @@ training_file = r'ground_truth\testing_default_value.csv'
 #### 4) Run Inception
 
 ```cmd
+-- Basic Run of the model
+python.exe odir_inception_training_basic.py
+-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_basic.md)
+
+-- Enhanced Run of the model using Data Augmentation
 python.exe odir_inception_training.py
+-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_enhanced.md)
 ```
 
 #### 5) Run VGG
@@ -206,9 +212,11 @@ python.exe odir_inception_training.py
 ```cmd
 -- Basic Run of the model
 python.exe odir_vgg_training_basic.py
--- Sample output can be seen here: 
+-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_basic.md)
+
 -- Enhanced Run of the model using Data Augmentation
 python.exe odir_vgg_training.py
+-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_enhanced.md)
 ```
 
 #### 6) Inception Inference

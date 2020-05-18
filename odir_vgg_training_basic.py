@@ -60,15 +60,6 @@ plotter = Plotter(class_names)
 
 callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=8, mode='min', verbose=1)
 
-# class_weight = {0: 1.,
-#                 1: 1.583802025,
-#                 2: 8.996805112,
-#                 3: 10.24,
-#                 4: 10.05714286,
-#                 5: 1.,
-#                 6: 1.,
-#                 7: 2.505338078}
-
 history = model.fit(x_train, y_train,
                     epochs=epochs,
                     batch_size=batch_size,

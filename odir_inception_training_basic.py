@@ -48,13 +48,14 @@ x = GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
 predictions = Dense(num_classes, activation='sigmoid')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
-#model.summary()
+model.summary()
 
 tf.keras.utils.plot_model(model, to_file=os.path.join(new_folder, 'model_inception_v3.png'), show_shapes=True,
                           show_layer_names=True)
 
-#for layer in base_model.layers:
-#    layer.trainable = False
+# Comment this out if you want to train all layers
+for layer in base_model.layers:
+    layer.trainable = False
 
 defined_metrics = [
     tf.keras.metrics.BinaryAccuracy(name='accuracy'),
@@ -63,14 +64,16 @@ defined_metrics = [
     tf.keras.metrics.AUC(name='auc'),
 ]
 
-#
+# Adam Optimizer Example
 # model.compile(loss='binary_crossentropy',
 #               optimizer=Adam(lr=0.001),
 #               metrics=defined_metrics)
 
+# RMSProp Optimizer Example
 # model.compile(loss='binary_crossentropy',
 #               optimizer='rmsprop',
 #               metrics=defined_metrics)
+
 sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='binary_crossentropy',
               optimizer=sgd,

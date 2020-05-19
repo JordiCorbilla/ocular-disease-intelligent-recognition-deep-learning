@@ -72,7 +72,9 @@ class NumpyDataGenerator:
 
         # save numpy array as .npy formats
         np.save(file_name_training, training)
+        self.logger.debug("Saving NPY File: " + file_name_training)
         np.save(file_name_training_labels, training_labels)
+        self.logger.debug("Saving NPY File: " + file_name_training_labels)
         self.logger.debug("Closing CSV file")
 
     def npy_testing_files(self, file_name_testing, file_name_testing_labels):
@@ -120,7 +122,9 @@ class NumpyDataGenerator:
 
         # save numpy array as .npy formats
         np.save(file_name_testing, testing)
+        self.logger.debug("Saving NPY File: " + file_name_testing)
         np.save(file_name_testing_labels, training_labels)
+        self.logger.debug("Saving NPY File: " + file_name_testing_labels)
         self.logger.debug("Closing CSV file")
 
     def npy_training_files_split(self, split_number, file_name_training, file_name_training_labels, file_name_testing,
@@ -172,7 +176,9 @@ class NumpyDataGenerator:
 
         # save numpy array as .npy formats
         np.save(file_name_training, training)
+        self.logger.debug("Saving NPY File: " + file_name_training)
         np.save(file_name_training_labels, training_labels)
+        self.logger.debug("Saving NPY File: " + file_name_training_labels)
         self.logger.debug("Closing CSV file")
 
     def is_sickness(self, row, sickness):

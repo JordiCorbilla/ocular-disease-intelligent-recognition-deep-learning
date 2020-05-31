@@ -217,13 +217,14 @@ Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease
 -- Basic Run of the model
 python.exe odir_vgg_training_basic.py
 ```
-Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_basic/vgg_basic.md)
+- Download the VGG16 ImageNet weights from here: (https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5)
+- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_basic/vgg_basic.md)
 
 ```cmd
 -- Enhanced Run of the model using Data Augmentation
 python.exe odir_vgg_training.py
 ```
-Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_advanced/vgg_advanced.md)
+- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_advanced/vgg_advanced.md)
 
 
 #### 6) Inception Inference

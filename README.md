@@ -108,7 +108,7 @@ The full list of packages used can be seen below:
 - numpy 1.17.2
 - scipy-1.3.1
 ```
-All the training images must be in JPEG format.
+All the training images must be in JPEG format and with 224x224px.
 
 ### Usage
 

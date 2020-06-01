@@ -174,7 +174,7 @@ class Plotter:
                 exists = True
         return exists
 
-    def plot_output(self, test_predictions_baseline, y_test, x_test_drawing):
+    def plot_output(self, test_predictions_baseline, y_test, x_test_drawing, test_run):
         mpl.rcParams["font.size"] = 7
         num_rows = 5
         num_cols = 3
@@ -194,6 +194,7 @@ class Plotter:
                 break
 
         plt.subplots_adjust(bottom=0.08, right=0.95, top=0.94, left=0.05, wspace=0.11, hspace=0.56)
+        plt.savefig(test_run)
         plt.show()
 
     def plot_output_single(self, i, test_predictions_baseline, y_test, x_test_drawing):

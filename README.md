@@ -2,7 +2,7 @@
 
 <p align="justify">This repository contains Jordi Corbilla's Msc dissertation: <br>
   - <b>Ocular Disease Intelligent recognition through deep learning architectures</b>, published by Universitat Oberta de Catalunya in 2020 [http://openaccess.uoc.edu/webapps/o2/handle/10609/113126]. 
-<br>  The dissertation PDFs and the dissertation sources are licensed under the Creative Commons Attribution license, as described in the LICENSE file.</p>
+<br>  The dissertation PDFs and the dissertation sources are licensed under the <b>Creative Commons Attribution</b> license, as described in the LICENSE file.</p>
 
 ## Abstract
 <p align="justify">Retinal pathologies are the most common cause of childhood blindness worldwide. Rapid and automatic detection of diseases is critical and urgent in reducing the ophthalmologist's workload. Ophthalmologists diagnose diseases based on pattern recognition through direct or indirect visualization of the eye and its surrounding structures. Dependence on the fundus of the eye and its analysis make the field of ophthalmology perfectly suited to benefit from deep learning algorithms. Each disease has different stages of severity that can be deduced by verifying the existence of specific lesions and each lesion is characterized by certain morphological features where several lesions of different pathologies have similar characteristics. We note that patients may be simultaneously affected by various pathologies, and consequently, the detection of eye diseases has a multi-label classification with a complex resolution principle.</p>
@@ -201,14 +201,14 @@ training_file = r'ground_truth\testing_default_value.csv'
 -- Basic Run of the model
 python.exe odir_inception_training_basic.py
 ```
-Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_basic/inception_basic.md)
+Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_basic/readme.md)
 
 
 ```cmd
 -- Enhanced Run of the model using Data Augmentation
 python.exe odir_inception_training.py
 ```
-Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_advanced/inception_advanced.md)
+Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_advanced/readme.md)
 
 #### 4.1) Inception Inference
 
@@ -222,14 +222,14 @@ python.exe odir_inception_testing_inference.py
 -- Basic Run of the model
 python.exe odir_vgg16_training_basic.py
 ```
-- Download the VGG16 ImageNet weights from here: (https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5)
-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg16_basic/vgg16_basic.md)
+- Download the VGG16 ImageNet weights from here: [weights](https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5)
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg16_basic/readme.md)
 
 ```cmd
 -- Enhanced Run of the model using Data Augmentation
 python.exe odir_vgg16_training.py
 ```
-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_advanced/vgg_advanced.md)
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg_advanced/readme.md)
 
 #### 5.1) VGG16 Inference
 
@@ -243,14 +243,14 @@ python.exe odir_vgg_testing_inference.py
 -- Basic Run of the model
 python.exe odir_vgg19_training_basic.py
 ```
-- Download the VGG19 ImageNet weights from here: (https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels.h5)
-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/vgg19_basic.md)
+- Download the VGG19 ImageNet weights from here: [weights](https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels.h5)
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/readme.md)
 
 ```cmd
 -- Enhanced Run of the model using Data Augmentation
 python.exe odir_vgg19_training.py
 ```
-- Sample output can be seen here: (https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_advanced/vgg19_advanced.md)
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_advanced/readme.md)
 
 #### 6.1) VGG16 Inference
 

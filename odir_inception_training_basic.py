@@ -75,6 +75,9 @@ defined_metrics = [
 #               metrics=defined_metrics)
 
 sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+print('Configuration Start -------------------------')
+print(sgd.get_config())
+print('Configuration End -------------------------')
 model.compile(loss='binary_crossentropy',
               optimizer=sgd,
               metrics=defined_metrics)
@@ -134,4 +137,4 @@ score = FinalScore(new_folder)
 score.output()
 
 # plot output results
-plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing)
+plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(new_folder, 'plot4.png'))

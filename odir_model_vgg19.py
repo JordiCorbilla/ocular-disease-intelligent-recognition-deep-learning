@@ -103,15 +103,15 @@ class Vgg19(ModelBase):
         layer = layers.Dense(4096, activation='relu')
         layer.trainable = trainable
         x.add(layer)
-        layer = layers.Dropout(0.5)
-        layer.trainable = True
-        x.add(layer)
+        #layer = layers.Dropout(0.5)
+        #layer.trainable = True
+        #x.add(layer)
         layer = layers.Dense(4096, activation='relu')
         layer.trainable = trainable
         x.add(layer)
-        layer = layers.Dropout(0.5)
-        layer.trainable = True
-        x.add(layer)
+        #layer = layers.Dropout(0.5)
+        #layer.trainable = True
+        #x.add(layer)
         layer = layers.Dense(1000, activation='softmax')
         layer.trainable = trainable
         x.add(layer)
@@ -126,7 +126,10 @@ class Vgg19(ModelBase):
         #x.add(layers.Dropout(0.1))
         x.add(layers.Dense(8, activation='sigmoid'))
         # optimizer = tensorflow.keras.optimizers.SGD(learning_rate=1e-3)
-        sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
+        sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=False)
+        print('Configuration Start -------------------------')
+        print(sgd.get_config())
+        print('Configuration End -------------------------')
         x.compile(optimizer=sgd, loss='binary_crossentropy', metrics=self.metrics)
 
         self.show_summary(x)

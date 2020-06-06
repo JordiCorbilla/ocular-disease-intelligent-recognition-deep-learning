@@ -110,6 +110,9 @@ class Vgg16(ModelBase):
         x.add(layers.Dense(8, activation='sigmoid'))
         #optimizer = tensorflow.keras.optimizers.SGD(learning_rate=1e-3)
         sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
+        print('Configuration Start -------------------------')
+        print(sgd.get_config())
+        print('Configuration End -------------------------')
         x.compile(optimizer=sgd, loss='binary_crossentropy', metrics=self.metrics)
 
         self.show_summary(x)

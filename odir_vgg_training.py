@@ -145,4 +145,4 @@ score = FinalScore(newfolder)
 score.output()
 
 # plot output results
-plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing)
+plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(newfolder, 'plot4.png'))

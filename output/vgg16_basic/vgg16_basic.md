@@ -1,3 +1,12 @@
+## Configuration
+
+- 'Optimizer': 'SGD'
+- 'learning_rate': 0.001
+- 'decay': 1e-06
+- 'momentum': 0.9
+- 'nesterov': True
+- 'Dropout': False
+
 ## Execution Output
 ```
 C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification>python odir_vgg_training_basic.py

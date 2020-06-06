@@ -45,6 +45,9 @@ class Plotter:
 
             plt.legend()
 
+        #fig_manager = plt.get_current_fig_manager()
+        #fig_manager.full_screen_toggle()
+        plt.subplots_adjust(top=0.92, bottom=0.08, left=0.10, right=0.95, hspace=0.25, wspace=0.35)
         plt.savefig(test_run)
         plt.show()
         plt.close()

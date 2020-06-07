@@ -195,6 +195,8 @@ training_file = r'ground_truth\testing_default_value.csv'
 
 **testing_default_value.csv** contains the vectors of the testing images.
 
+### Deep Learning Models
+
 #### 4) Run Inception-v3
 
 ```cmd
@@ -237,6 +239,8 @@ python.exe odir_vgg16_training.py
 python.exe odir_vgg_testing_inference.py
 ```
 
+### Deep Learning Models (Additional)
+
 #### 6) Run VGG19
 
 ```cmd
@@ -252,10 +256,30 @@ python.exe odir_vgg19_training.py
 ```
 - Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_advanced/readme.md)
 
-#### 6.1) VGG16 Inference
+#### 6.1) VGG19 Inference
 
 ```cmd
 python.exe odir_vgg19_testing_inference.py
+```
+
+#### 7) Run ResNet50
+
+```cmd
+-- Basic Run of the model
+python.exe odir_resnet50_training_basic.py
+```
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/readme.md)
+
+```cmd
+-- Enhanced Run of the model using Data Augmentation
+python.exe odir_resnet50_training.py
+```
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_advanced/readme.md)
+
+#### 6.1) ResNet50 Inference
+
+```cmd
+python.exe odir_resnet50_testing_inference.py
 ```
 
 ## References

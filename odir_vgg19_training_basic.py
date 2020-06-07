@@ -73,25 +73,19 @@ callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patienc
 history = model.fit(x_train, y_train,
                     epochs=epochs,
                     batch_size=batch_size,
-                    shuffle=True, #class_weight = class_weight,
+                    shuffle=True, #class_weight=class_weight,
                     validation_data=(x_test, y_test), callbacks=[callback])
 
-print("saving")
+print("saving weights")
 model.save(os.path.join(new_folder, 'model_weights.h5'))
 
-print("plotting")
+print("plotting metrics")
 plotter.plot_metrics(history, os.path.join(new_folder, 'plot1.png'), 2)
 
-# Hide meanwhile for now
-plt.plot(history.history['accuracy'], label='accuracy')
-plt.plot(history.history['val_accuracy'], label='val_accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.legend(loc='lower right')
-plt.savefig(os.path.join(new_folder, 'plot2.png'))
-plt.show()
+print("plotting accuracy")
+plotter.plot_accuracy(history, os.path.join(new_folder, 'plot2.png'))
 
-# display the content of the model
+print("display the content of the model")
 baseline_results = model.evaluate(x_test, y_test, verbose=2)
 for name, value in zip(model.metrics_names, baseline_results):
     print(name, ': ', value)
@@ -99,6 +93,7 @@ print()
 
 # test a prediction
 test_predictions_baseline = model.predict(x_test)
+print("plotting confusion matrix")
 plotter.plot_confusion_matrix_generic(y_test, test_predictions_baseline, os.path.join(new_folder, 'plot3.png'), 0)
 
 # save the predictions

@@ -55,8 +55,8 @@ base_model = resnet50.ResNet50
 base_model = base_model(weights='imagenet', include_top=False)
 
 # Comment this out if you want to train all layers
-for layer in base_model.layers:
-    layer.trainable = False
+#for layer in base_model.layers:
+#    layer.trainable = False
 
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
@@ -84,7 +84,7 @@ defined_metrics = [
 #               optimizer='rmsprop',
 #               metrics=defined_metrics)
 
-sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=False)
+sgd = SGD(lr=0.0001, decay=1e-6, momentum=0.9, nesterov=True)
 print('Configuration Start -------------------------')
 print(sgd.get_config())
 print('Configuration End -------------------------')

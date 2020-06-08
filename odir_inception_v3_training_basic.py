@@ -30,7 +30,8 @@ from tensorflow.keras.optimizers import SGD
 
 batch_size = 32
 num_classes = 8
-epochs = 50
+epochs = 100
+patience = 8
 
 token = secrets.token_hex(16)
 folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\test_run'
@@ -43,6 +44,11 @@ if not os.path.exists(new_folder):
 base_model = inception_v3.InceptionV3
 
 base_model = base_model(weights='imagenet', include_top=False)
+
+# Comment this out if you want to train all layers
+#for layer in base_model.layers:
+#    layer.trainable = False
+
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
@@ -52,10 +58,6 @@ model.summary()
 
 tf.keras.utils.plot_model(model, to_file=os.path.join(new_folder, 'model_inception_v3.png'), show_shapes=True,
                           show_layer_names=True)
-
-# Comment this out if you want to train all layers
-for layer in base_model.layers:
-    layer.trainable = False
 
 defined_metrics = [
     tf.keras.metrics.BinaryAccuracy(name='accuracy'),
@@ -74,7 +76,7 @@ defined_metrics = [
 #               optimizer='rmsprop',
 #               metrics=defined_metrics)
 
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.0001, decay=1e-6, momentum=0.9, nesterov=True)
 print('Configuration Start -------------------------')
 print(sgd.get_config())
 print('Configuration End -------------------------')
@@ -94,7 +96,7 @@ class_names = ['Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertensio
 # plot data input
 plotter = Plotter(class_names)
 
-callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=8, mode='min', verbose=1)
+callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, mode='min', verbose=1)
 
 history = model.fit(x_train, y_train,
                     epochs=epochs,
@@ -102,22 +104,16 @@ history = model.fit(x_train, y_train,
                     shuffle=True,
                     validation_data=(x_test, y_test), callbacks=[callback])
 
-print("saving")
+print("saving weights")
 model.save(os.path.join(new_folder, 'model_weights.h5'))
 
-print("plotting")
+print("plotting metrics")
 plotter.plot_metrics(history, os.path.join(new_folder, 'plot1.png'), 2)
 
-# Hide meanwhile for now
-plt.plot(history.history['accuracy'], label='accuracy')
-plt.plot(history.history['val_accuracy'], label='val_accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.legend(loc='lower right')
-plt.savefig(os.path.join(new_folder, 'plot2.png'))
-plt.show()
+print("plotting accuracy")
+plotter.plot_accuracy(history, os.path.join(new_folder, 'plot2.png'))
 
-# display the content of the model
+print("display the content of the model")
 baseline_results = model.evaluate(x_test, y_test, verbose=2)
 for name, value in zip(model.metrics_names, baseline_results):
     print(name, ': ', value)
@@ -125,6 +121,7 @@ print()
 
 # test a prediction
 test_predictions_baseline = model.predict(x_test)
+print("plotting confusion matrix")
 plotter.plot_confusion_matrix_generic(y_test, test_predictions_baseline, os.path.join(new_folder, 'plot3.png'), 0)
 
 # save the predictions

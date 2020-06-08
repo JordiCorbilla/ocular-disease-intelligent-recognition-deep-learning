@@ -30,8 +30,8 @@ from tensorflow.keras.optimizers import SGD
 
 batch_size = 32
 num_classes = 8
-epochs = 50
-patience = 5
+epochs = 100
+patience = 8
 
 class_weight = {0: 1.,
                 1: 1.583802025,

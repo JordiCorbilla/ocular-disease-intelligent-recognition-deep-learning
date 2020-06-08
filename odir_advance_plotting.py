@@ -108,6 +108,16 @@ class Plotter:
             prediction = prediction + "{} {:2.0f}% \n".format(self.class_names[k], 100 * third)
         plt.xlabel("Predicted: {} Ground Truth: {}".format(prediction, ground), color=color)
 
+    def plot_accuracy(self, history, new_folder):
+        # Hide meanwhile for now
+        plt.plot(history.history['accuracy'], label='accuracy')
+        plt.plot(history.history['val_accuracy'], label='val_accuracy')
+        plt.xlabel('Epoch')
+        plt.ylabel('Accuracy')
+        plt.legend(loc='lower right')
+        plt.savefig(new_folder)
+        plt.show()
+
     def calculate_3_largest(self, arr, arr_size):
         if arr_size < 3:
             print(" Invalid Input ")
@@ -180,7 +190,7 @@ class Plotter:
     def plot_output(self, test_predictions_baseline, y_test, x_test_drawing, test_run):
         mpl.rcParams["font.size"] = 7
         num_rows = 5
-        num_cols = 3
+        num_cols = 5
         num_images = num_rows * num_cols
         plt.figure(figsize=(2 * 2 * num_cols, 2 * num_rows))
         j = 0

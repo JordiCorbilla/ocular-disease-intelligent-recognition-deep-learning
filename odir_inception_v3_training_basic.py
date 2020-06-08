@@ -76,7 +76,7 @@ defined_metrics = [
 #               optimizer='rmsprop',
 #               metrics=defined_metrics)
 
-sgd = SGD(lr=0.0001, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 print('Configuration Start -------------------------')
 print(sgd.get_config())
 print('Configuration End -------------------------')

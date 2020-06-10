@@ -57,8 +57,8 @@ base_model = inception_resnet_v2.InceptionResNetV2
 base_model = base_model(weights='imagenet', include_top=False)
 
 # Comment this out if you want to train all layers
-#for layer in base_model.layers:
-#    layer.trainable = False
+for layer in base_model.layers:
+    layer.trainable = False
 
 x = base_model.output
 x = GlobalAveragePooling2D()(x)

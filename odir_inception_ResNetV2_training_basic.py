@@ -14,7 +14,7 @@
 # ==============================================================================
 import os
 import tensorflow as tf
-from tensorflow.keras.applications import inception_v3
+from tensorflow.keras.applications import inception_resnet_v2
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow.keras.models import Model
 from tensorflow.python.keras.optimizers import SGD
@@ -27,6 +27,8 @@ from odir_kappa_score import FinalScore
 from odir_predictions_writer import Prediction
 import matplotlib.pyplot as plt
 from tensorflow.keras.optimizers import SGD
+from sklearn.utils import class_weight
+import numpy as np
 
 batch_size = 32
 num_classes = 8
@@ -50,7 +52,7 @@ new_folder = os.path.join(folder, token)
 if not os.path.exists(new_folder):
     os.makedirs(new_folder)
 
-base_model = inception_v3.InceptionV3
+base_model = inception_resnet_v2.InceptionResNetV2
 
 base_model = base_model(weights='imagenet', include_top=False)
 
@@ -65,7 +67,7 @@ predictions = Dense(num_classes, activation='sigmoid')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
 model.summary()
 
-tf.keras.utils.plot_model(model, to_file=os.path.join(new_folder, 'model_inception_v3.png'), show_shapes=True, show_layer_names=True)
+tf.keras.utils.plot_model(model, to_file=os.path.join(new_folder, 'model_inception_resnet_v2.png'), show_shapes=True, show_layer_names=True)
 
 defined_metrics = [
     tf.keras.metrics.BinaryAccuracy(name='accuracy'),
@@ -94,8 +96,8 @@ model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=defined_metrics
 
 x_test_drawing = x_test
 
-x_train = inception_v3.preprocess_input(x_train)
-x_test = inception_v3.preprocess_input(x_test)
+x_train = inception_resnet_v2.preprocess_input(x_train)
+x_test = inception_resnet_v2.preprocess_input(x_test)
 
 class_names = ['Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertension', 'Myopia', 'Others']
 
@@ -104,10 +106,12 @@ plotter = Plotter(class_names)
 
 callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, mode='min', verbose=1)
 
+class_weight = class_weight.compute_class_weight('balanced', np.unique(x_train), x_train)
+
 history = model.fit(x_train, y_train,
                     epochs=epochs,
                     batch_size=batch_size,
-                    shuffle=True,
+                    shuffle=True, class_weight= class_weight,
                     validation_data=(x_test, y_test), callbacks=[callback])
 
 print("saving weights")

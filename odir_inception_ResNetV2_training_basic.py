@@ -106,12 +106,12 @@ plotter = Plotter(class_names)
 
 callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, mode='min', verbose=1)
 
-class_weight = class_weight.compute_class_weight('balanced', np.unique(x_train), x_train)
+#class_weight = class_weight.compute_class_weight('balanced', np.unique(x_train), x_train)
 
 history = model.fit(x_train, y_train,
                     epochs=epochs,
                     batch_size=batch_size,
-                    shuffle=True, class_weight= class_weight,
+                    shuffle=True, #class_weight= class_weight,
                     validation_data=(x_test, y_test), callbacks=[callback])
 
 print("saving weights")

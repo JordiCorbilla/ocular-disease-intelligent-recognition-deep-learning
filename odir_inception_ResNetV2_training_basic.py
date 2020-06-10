@@ -15,9 +15,10 @@
 import os
 import tensorflow as tf
 from tensorflow.keras.applications import inception_resnet_v2
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout, Flatten
 from tensorflow.keras.models import Model
-from tensorflow.python.keras.optimizers import SGD
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+from tensorflow.python.keras.optimizers import SGD, Adam
 
 os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
 import secrets
@@ -34,6 +35,7 @@ batch_size = 32
 num_classes = 8
 epochs = 100
 patience = 8
+freeze_layers = 2
 
 # class_weight = {0: 1.,
 #                 1: 1.583802025,
@@ -58,13 +60,23 @@ base_model = base_model(weights='imagenet', include_top=False)
 
 # Comment this out if you want to train all layers
 for layer in base_model.layers:
-    layer.trainable = False
+    layer.trainable = True
+
+
 
 x = base_model.output
+#x = Flatten()(x)
+#x = Dropout(0.5)(x)
 x = GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
 predictions = Dense(num_classes, activation='sigmoid')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
+
+#for layer in model.layers[:freeze_layers]:
+#    layer.trainable = True
+#for layer in model.layers[freeze_layers:]:
+#    layer.trainable = False
+
 model.summary()
 
 tf.keras.utils.plot_model(model, to_file=os.path.join(new_folder, 'model_inception_resnet_v2.png'), show_shapes=True, show_layer_names=True)
@@ -86,7 +98,7 @@ defined_metrics = [
 #               optimizer='rmsprop',
 #               metrics=defined_metrics)
 
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.0001, decay=1e-6, momentum=0.9, nesterov=True)
 print('Configuration Start -------------------------')
 print(sgd.get_config())
 print('Configuration End -------------------------')

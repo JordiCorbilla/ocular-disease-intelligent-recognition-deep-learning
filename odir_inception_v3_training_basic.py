@@ -27,6 +27,8 @@ from odir_kappa_score import FinalScore
 from odir_predictions_writer import Prediction
 import matplotlib.pyplot as plt
 from tensorflow.keras.optimizers import SGD
+from sklearn.utils import class_weight
+import numpy as np
 
 batch_size = 32
 num_classes = 8
@@ -104,10 +106,12 @@ plotter = Plotter(class_names)
 
 callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, mode='min', verbose=1)
 
+#class_weight = class_weight.compute_class_weight('balanced', np.unique(x_train), x_train)
+
 history = model.fit(x_train, y_train,
                     epochs=epochs,
                     batch_size=batch_size,
-                    shuffle=True,
+                    shuffle=True, #class_weight= class_weight,
                     validation_data=(x_test, y_test), callbacks=[callback])
 
 print("saving weights")

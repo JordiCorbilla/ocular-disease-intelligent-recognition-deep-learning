@@ -239,7 +239,7 @@ python.exe odir_vgg16_training.py
 python.exe odir_vgg_testing_inference.py
 ```
 
-### Deep Learning Models (Additional)
+### Deep Learning Models (Additional - out of the scope of this dissertation)
 
 #### 6) Run VGG19
 
@@ -276,10 +276,30 @@ python.exe odir_resnet50_training.py
 ```
 - Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_advanced/readme.md)
 
-#### 6.1) ResNet50 Inference
+#### 7.1) ResNet50 Inference
 
 ```cmd
 python.exe odir_resnet50_testing_inference.py
+```
+
+#### 8) Run InceptionResNetV2
+
+```cmd
+-- Basic Run of the model
+python.exe odir_inception_ResNetV2_training_basic.py
+```
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/readme.md)
+
+```cmd
+-- Enhanced Run of the model using Data Augmentation
+python.exe odir_inception_ResNetV2_training.py
+```
+- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_advanced/readme.md)
+
+#### 8.1) ResNet50 Inference
+
+```cmd
+python.exe odir_inception_ResNetV2_testing_inference.py
 ```
 
 ## References

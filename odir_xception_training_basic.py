@@ -20,6 +20,7 @@ from tensorflow.keras.models import Model
 from tensorflow.python.keras.optimizers import SGD
 
 os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 import secrets
 import odir
 from odir_advance_plotting import Plotter

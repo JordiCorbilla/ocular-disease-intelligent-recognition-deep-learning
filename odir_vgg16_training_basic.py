@@ -27,6 +27,7 @@ from tensorflow.keras.applications import vgg16
 batch_size = 32
 num_classes = 8
 epochs = 50
+patience = 5
 
 token = secrets.token_hex(16)
 folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\test_run'
@@ -58,7 +59,7 @@ class_names = ['Normal', 'Diabetes', 'Glaucoma', 'Cataract', 'AMD', 'Hypertensio
 # plot data input
 plotter = Plotter(class_names)
 
-callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=8, mode='min', verbose=1)
+callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, mode='min', verbose=1)
 
 class_weight = {0: 1.,
                 1: 1.583802025,

@@ -34,7 +34,7 @@ import numpy as np
 batch_size = 32
 num_classes = 8
 epochs = 100
-patience = 8
+patience = 5
 freeze_layers = 2
 
 # class_weight = {0: 1.,

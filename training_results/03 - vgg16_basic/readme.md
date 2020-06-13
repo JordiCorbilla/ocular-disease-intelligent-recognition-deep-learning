@@ -139,12 +139,12 @@ Final Score: 0.6558950879546809
 ```
 
 ## Plots
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg16_basic/plot1.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg16_basic/plot2.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg16_basic/plot3.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot1.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot2.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot3.png)
 
 ## Ground Truth
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg16_basic/odir_ground_truth.csv
+https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/03%20-%20vgg16_basic/odir_ground_truth.csv
 
 ## Output Predictions
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg16_basic/odir_predictions.csv
+https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/03%20-%20vgg16_basic/odir_predictions.csv

@@ -1,161 +1,362 @@
 ## Configuration
 
 - 'Optimizer': 'SGD'
-- 'learning_rate': 0.001
+- 'learning_rate': 0.01
 - 'decay': 1e-06
 - 'momentum': 0.9
-- 'nesterov': False
+- 'nesterov': True
 - 'Dropout': False
 
 ## Execution Output
 ```
-C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification>python odir_vgg19_training_basic.py
-2020-06-06 12:44:25.257215: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
-2020-06-06 12:44:52.797051: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
-2020-06-06 12:44:53.824237: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties:
-name: GeForce GTX 960M major: 5 minor: 0 memoryClockRate(GHz): 1.176
-pciBusID: 0000:01:00.0
-2020-06-06 12:44:53.837853: I tensorflow/stream_executor/platform/default/dlopen_checker_stub.cc:25] GPU libraries are statically linked, skip dlopen check.
-2020-06-06 12:44:53.850429: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
-2020-06-06 12:44:53.857566: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
-2020-06-06 12:44:53.882580: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties:
-name: GeForce GTX 960M major: 5 minor: 0 memoryClockRate(GHz): 1.176
-pciBusID: 0000:01:00.0
-2020-06-06 12:44:53.895024: I tensorflow/stream_executor/platform/default/dlopen_checker_stub.cc:25] GPU libraries are statically linked, skip dlopen check.
-2020-06-06 12:44:53.910233: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
-2020-06-06 12:44:58.973294: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-06-06 12:44:58.979089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0
-2020-06-06 12:44:58.983915: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N
-2020-06-06 12:44:58.989862: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 3040 MB memory) -> physical GPU (device: 0, name: GeForce GTX 960M, pci bus id: 0000:01:00.0, compute capability: 5.0)
-Model: "sequential"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-conv2d (Conv2D)              (None, 224, 224, 64)      1792
-_________________________________________________________________
-conv2d_1 (Conv2D)            (None, 224, 224, 64)      36928
-_________________________________________________________________
-max_pooling2d (MaxPooling2D) (None, 112, 112, 64)      0
-_________________________________________________________________
-conv2d_2 (Conv2D)            (None, 112, 112, 128)     73856
-_________________________________________________________________
-conv2d_3 (Conv2D)            (None, 112, 112, 128)     147584
-_________________________________________________________________
-max_pooling2d_1 (MaxPooling2 (None, 56, 56, 128)       0
-_________________________________________________________________
-conv2d_4 (Conv2D)            (None, 56, 56, 256)       295168
-_________________________________________________________________
-conv2d_5 (Conv2D)            (None, 56, 56, 256)       590080
-_________________________________________________________________
-conv2d_6 (Conv2D)            (None, 56, 56, 256)       590080
-_________________________________________________________________
-conv2d_7 (Conv2D)            (None, 56, 56, 256)       590080
-_________________________________________________________________
-max_pooling2d_2 (MaxPooling2 (None, 28, 28, 256)       0
-_________________________________________________________________
-conv2d_8 (Conv2D)            (None, 28, 28, 512)       1180160
-_________________________________________________________________
-conv2d_9 (Conv2D)            (None, 28, 28, 512)       2359808
-_________________________________________________________________
-conv2d_10 (Conv2D)           (None, 28, 28, 512)       2359808
-_________________________________________________________________
-conv2d_11 (Conv2D)           (None, 28, 28, 512)       2359808
-_________________________________________________________________
-max_pooling2d_3 (MaxPooling2 (None, 14, 14, 512)       0
-_________________________________________________________________
-conv2d_12 (Conv2D)           (None, 14, 14, 512)       2359808
-_________________________________________________________________
-conv2d_13 (Conv2D)           (None, 14, 14, 512)       2359808
-_________________________________________________________________
-conv2d_14 (Conv2D)           (None, 14, 14, 512)       2359808
-_________________________________________________________________
-conv2d_15 (Conv2D)           (None, 14, 14, 512)       2359808
-_________________________________________________________________
-max_pooling2d_4 (MaxPooling2 (None, 7, 7, 512)         0
-_________________________________________________________________
-flatten (Flatten)            (None, 25088)             0
-_________________________________________________________________
-dense (Dense)                (None, 4096)              102764544
-_________________________________________________________________
-dense_1 (Dense)              (None, 4096)              16781312
-_________________________________________________________________
-dense_3 (Dense)              (None, 8)                 32776
-=================================================================
-Total params: 139,603,016
-Trainable params: 32,776
-Non-trainable params: 139,570,240
-_________________________________________________________________
+C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification>python odir_xception_training_basic.py
+2020-06-12 08:34:04.204639: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
+2020-06-12 08:34:38.284160: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
+2020-06-12 08:34:39.433341: E tensorflow/stream_executor/cuda/cuda_driver.cc:318] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2020-06-12 08:34:39.524593: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: LAPTOP-NB3QKBHM
+2020-06-12 08:34:39.537359: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: LAPTOP-NB3QKBHM
+2020-06-12 08:34:39.547964: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to
+==================================================================================================
+input_1 (InputLayer)            [(None, None, None,  0
+__________________________________________________________________________________________________
+block1_conv1 (Conv2D)           (None, None, None, 3 864         input_1[0][0]
+__________________________________________________________________________________________________
+block1_conv1_bn (BatchNormaliza (None, None, None, 3 128         block1_conv1[0][0]
+__________________________________________________________________________________________________
+block1_conv1_act (Activation)   (None, None, None, 3 0           block1_conv1_bn[0][0]
+__________________________________________________________________________________________________
+block1_conv2 (Conv2D)           (None, None, None, 6 18432       block1_conv1_act[0][0]
+__________________________________________________________________________________________________
+block1_conv2_bn (BatchNormaliza (None, None, None, 6 256         block1_conv2[0][0]
+__________________________________________________________________________________________________
+block1_conv2_act (Activation)   (None, None, None, 6 0           block1_conv2_bn[0][0]
+__________________________________________________________________________________________________
+block2_sepconv1 (SeparableConv2 (None, None, None, 1 8768        block1_conv2_act[0][0]
+__________________________________________________________________________________________________
+block2_sepconv1_bn (BatchNormal (None, None, None, 1 512         block2_sepconv1[0][0]
+__________________________________________________________________________________________________
+block2_sepconv2_act (Activation (None, None, None, 1 0           block2_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block2_sepconv2 (SeparableConv2 (None, None, None, 1 17536       block2_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block2_sepconv2_bn (BatchNormal (None, None, None, 1 512         block2_sepconv2[0][0]
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, None, None, 1 8192        block1_conv2_act[0][0]
+__________________________________________________________________________________________________
+block2_pool (MaxPooling2D)      (None, None, None, 1 0           block2_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, None, None, 1 512         conv2d[0][0]
+__________________________________________________________________________________________________
+add (Add)                       (None, None, None, 1 0           block2_pool[0][0]
+                                                                 batch_normalization[0][0]
+__________________________________________________________________________________________________
+block3_sepconv1_act (Activation (None, None, None, 1 0           add[0][0]
+__________________________________________________________________________________________________
+block3_sepconv1 (SeparableConv2 (None, None, None, 2 33920       block3_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block3_sepconv1_bn (BatchNormal (None, None, None, 2 1024        block3_sepconv1[0][0]
+__________________________________________________________________________________________________
+block3_sepconv2_act (Activation (None, None, None, 2 0           block3_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block3_sepconv2 (SeparableConv2 (None, None, None, 2 67840       block3_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block3_sepconv2_bn (BatchNormal (None, None, None, 2 1024        block3_sepconv2[0][0]
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, None, None, 2 32768       add[0][0]
+__________________________________________________________________________________________________
+block3_pool (MaxPooling2D)      (None, None, None, 2 0           block3_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, None, None, 2 1024        conv2d_1[0][0]
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, None, None, 2 0           block3_pool[0][0]
+                                                                 batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+block4_sepconv1_act (Activation (None, None, None, 2 0           add_1[0][0]
+__________________________________________________________________________________________________
+block4_sepconv1 (SeparableConv2 (None, None, None, 7 188672      block4_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block4_sepconv1_bn (BatchNormal (None, None, None, 7 2912        block4_sepconv1[0][0]
+__________________________________________________________________________________________________
+block4_sepconv2_act (Activation (None, None, None, 7 0           block4_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block4_sepconv2 (SeparableConv2 (None, None, None, 7 536536      block4_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block4_sepconv2_bn (BatchNormal (None, None, None, 7 2912        block4_sepconv2[0][0]
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, None, None, 7 186368      add_1[0][0]
+__________________________________________________________________________________________________
+block4_pool (MaxPooling2D)      (None, None, None, 7 0           block4_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, None, None, 7 2912        conv2d_2[0][0]
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, None, None, 7 0           block4_pool[0][0]
+                                                                 batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+block5_sepconv1_act (Activation (None, None, None, 7 0           add_2[0][0]
+__________________________________________________________________________________________________
+block5_sepconv1 (SeparableConv2 (None, None, None, 7 536536      block5_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block5_sepconv1_bn (BatchNormal (None, None, None, 7 2912        block5_sepconv1[0][0]
+__________________________________________________________________________________________________
+block5_sepconv2_act (Activation (None, None, None, 7 0           block5_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block5_sepconv2 (SeparableConv2 (None, None, None, 7 536536      block5_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block5_sepconv2_bn (BatchNormal (None, None, None, 7 2912        block5_sepconv2[0][0]
+__________________________________________________________________________________________________
+block5_sepconv3_act (Activation (None, None, None, 7 0           block5_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block5_sepconv3 (SeparableConv2 (None, None, None, 7 536536      block5_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block5_sepconv3_bn (BatchNormal (None, None, None, 7 2912        block5_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, None, None, 7 0           block5_sepconv3_bn[0][0]
+                                                                 add_2[0][0]
+__________________________________________________________________________________________________
+block6_sepconv1_act (Activation (None, None, None, 7 0           add_3[0][0]
+__________________________________________________________________________________________________
+block6_sepconv1 (SeparableConv2 (None, None, None, 7 536536      block6_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block6_sepconv1_bn (BatchNormal (None, None, None, 7 2912        block6_sepconv1[0][0]
+__________________________________________________________________________________________________
+block6_sepconv2_act (Activation (None, None, None, 7 0           block6_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block6_sepconv2 (SeparableConv2 (None, None, None, 7 536536      block6_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block6_sepconv2_bn (BatchNormal (None, None, None, 7 2912        block6_sepconv2[0][0]
+__________________________________________________________________________________________________
+block6_sepconv3_act (Activation (None, None, None, 7 0           block6_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block6_sepconv3 (SeparableConv2 (None, None, None, 7 536536      block6_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block6_sepconv3_bn (BatchNormal (None, None, None, 7 2912        block6_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, None, None, 7 0           block6_sepconv3_bn[0][0]
+                                                                 add_3[0][0]
+__________________________________________________________________________________________________
+block7_sepconv1_act (Activation (None, None, None, 7 0           add_4[0][0]
+__________________________________________________________________________________________________
+block7_sepconv1 (SeparableConv2 (None, None, None, 7 536536      block7_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block7_sepconv1_bn (BatchNormal (None, None, None, 7 2912        block7_sepconv1[0][0]
+__________________________________________________________________________________________________
+block7_sepconv2_act (Activation (None, None, None, 7 0           block7_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block7_sepconv2 (SeparableConv2 (None, None, None, 7 536536      block7_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block7_sepconv2_bn (BatchNormal (None, None, None, 7 2912        block7_sepconv2[0][0]
+__________________________________________________________________________________________________
+block7_sepconv3_act (Activation (None, None, None, 7 0           block7_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block7_sepconv3 (SeparableConv2 (None, None, None, 7 536536      block7_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block7_sepconv3_bn (BatchNormal (None, None, None, 7 2912        block7_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, None, None, 7 0           block7_sepconv3_bn[0][0]
+                                                                 add_4[0][0]
+__________________________________________________________________________________________________
+block8_sepconv1_act (Activation (None, None, None, 7 0           add_5[0][0]
+__________________________________________________________________________________________________
+block8_sepconv1 (SeparableConv2 (None, None, None, 7 536536      block8_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block8_sepconv1_bn (BatchNormal (None, None, None, 7 2912        block8_sepconv1[0][0]
+__________________________________________________________________________________________________
+block8_sepconv2_act (Activation (None, None, None, 7 0           block8_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block8_sepconv2 (SeparableConv2 (None, None, None, 7 536536      block8_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block8_sepconv2_bn (BatchNormal (None, None, None, 7 2912        block8_sepconv2[0][0]
+__________________________________________________________________________________________________
+block8_sepconv3_act (Activation (None, None, None, 7 0           block8_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block8_sepconv3 (SeparableConv2 (None, None, None, 7 536536      block8_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block8_sepconv3_bn (BatchNormal (None, None, None, 7 2912        block8_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, None, None, 7 0           block8_sepconv3_bn[0][0]
+                                                                 add_5[0][0]
+__________________________________________________________________________________________________
+block9_sepconv1_act (Activation (None, None, None, 7 0           add_6[0][0]
+__________________________________________________________________________________________________
+block9_sepconv1 (SeparableConv2 (None, None, None, 7 536536      block9_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block9_sepconv1_bn (BatchNormal (None, None, None, 7 2912        block9_sepconv1[0][0]
+__________________________________________________________________________________________________
+block9_sepconv2_act (Activation (None, None, None, 7 0           block9_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block9_sepconv2 (SeparableConv2 (None, None, None, 7 536536      block9_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block9_sepconv2_bn (BatchNormal (None, None, None, 7 2912        block9_sepconv2[0][0]
+__________________________________________________________________________________________________
+block9_sepconv3_act (Activation (None, None, None, 7 0           block9_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block9_sepconv3 (SeparableConv2 (None, None, None, 7 536536      block9_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block9_sepconv3_bn (BatchNormal (None, None, None, 7 2912        block9_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, None, None, 7 0           block9_sepconv3_bn[0][0]
+                                                                 add_6[0][0]
+__________________________________________________________________________________________________
+block10_sepconv1_act (Activatio (None, None, None, 7 0           add_7[0][0]
+__________________________________________________________________________________________________
+block10_sepconv1 (SeparableConv (None, None, None, 7 536536      block10_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block10_sepconv1_bn (BatchNorma (None, None, None, 7 2912        block10_sepconv1[0][0]
+__________________________________________________________________________________________________
+block10_sepconv2_act (Activatio (None, None, None, 7 0           block10_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block10_sepconv2 (SeparableConv (None, None, None, 7 536536      block10_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block10_sepconv2_bn (BatchNorma (None, None, None, 7 2912        block10_sepconv2[0][0]
+__________________________________________________________________________________________________
+block10_sepconv3_act (Activatio (None, None, None, 7 0           block10_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block10_sepconv3 (SeparableConv (None, None, None, 7 536536      block10_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block10_sepconv3_bn (BatchNorma (None, None, None, 7 2912        block10_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, None, None, 7 0           block10_sepconv3_bn[0][0]
+                                                                 add_7[0][0]
+__________________________________________________________________________________________________
+block11_sepconv1_act (Activatio (None, None, None, 7 0           add_8[0][0]
+__________________________________________________________________________________________________
+block11_sepconv1 (SeparableConv (None, None, None, 7 536536      block11_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block11_sepconv1_bn (BatchNorma (None, None, None, 7 2912        block11_sepconv1[0][0]
+__________________________________________________________________________________________________
+block11_sepconv2_act (Activatio (None, None, None, 7 0           block11_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block11_sepconv2 (SeparableConv (None, None, None, 7 536536      block11_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block11_sepconv2_bn (BatchNorma (None, None, None, 7 2912        block11_sepconv2[0][0]
+__________________________________________________________________________________________________
+block11_sepconv3_act (Activatio (None, None, None, 7 0           block11_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block11_sepconv3 (SeparableConv (None, None, None, 7 536536      block11_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block11_sepconv3_bn (BatchNorma (None, None, None, 7 2912        block11_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_9 (Add)                     (None, None, None, 7 0           block11_sepconv3_bn[0][0]
+                                                                 add_8[0][0]
+__________________________________________________________________________________________________
+block12_sepconv1_act (Activatio (None, None, None, 7 0           add_9[0][0]
+__________________________________________________________________________________________________
+block12_sepconv1 (SeparableConv (None, None, None, 7 536536      block12_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block12_sepconv1_bn (BatchNorma (None, None, None, 7 2912        block12_sepconv1[0][0]
+__________________________________________________________________________________________________
+block12_sepconv2_act (Activatio (None, None, None, 7 0           block12_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block12_sepconv2 (SeparableConv (None, None, None, 7 536536      block12_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block12_sepconv2_bn (BatchNorma (None, None, None, 7 2912        block12_sepconv2[0][0]
+__________________________________________________________________________________________________
+block12_sepconv3_act (Activatio (None, None, None, 7 0           block12_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+block12_sepconv3 (SeparableConv (None, None, None, 7 536536      block12_sepconv3_act[0][0]
+__________________________________________________________________________________________________
+block12_sepconv3_bn (BatchNorma (None, None, None, 7 2912        block12_sepconv3[0][0]
+__________________________________________________________________________________________________
+add_10 (Add)                    (None, None, None, 7 0           block12_sepconv3_bn[0][0]
+                                                                 add_9[0][0]
+__________________________________________________________________________________________________
+block13_sepconv1_act (Activatio (None, None, None, 7 0           add_10[0][0]
+__________________________________________________________________________________________________
+block13_sepconv1 (SeparableConv (None, None, None, 7 536536      block13_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block13_sepconv1_bn (BatchNorma (None, None, None, 7 2912        block13_sepconv1[0][0]
+__________________________________________________________________________________________________
+block13_sepconv2_act (Activatio (None, None, None, 7 0           block13_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block13_sepconv2 (SeparableConv (None, None, None, 1 752024      block13_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+block13_sepconv2_bn (BatchNorma (None, None, None, 1 4096        block13_sepconv2[0][0]
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, None, None, 1 745472      add_10[0][0]
+__________________________________________________________________________________________________
+block13_pool (MaxPooling2D)     (None, None, None, 1 0           block13_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, None, None, 1 4096        conv2d_3[0][0]
+__________________________________________________________________________________________________
+add_11 (Add)                    (None, None, None, 1 0           block13_pool[0][0]
+                                                                 batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+block14_sepconv1 (SeparableConv (None, None, None, 1 1582080     add_11[0][0]
+__________________________________________________________________________________________________
+block14_sepconv1_bn (BatchNorma (None, None, None, 1 6144        block14_sepconv1[0][0]
+__________________________________________________________________________________________________
+block14_sepconv1_act (Activatio (None, None, None, 1 0           block14_sepconv1_bn[0][0]
+__________________________________________________________________________________________________
+block14_sepconv2 (SeparableConv (None, None, None, 2 3159552     block14_sepconv1_act[0][0]
+__________________________________________________________________________________________________
+block14_sepconv2_bn (BatchNorma (None, None, None, 2 8192        block14_sepconv2[0][0]
+__________________________________________________________________________________________________
+block14_sepconv2_act (Activatio (None, None, None, 2 0           block14_sepconv2_bn[0][0]
+__________________________________________________________________________________________________
+global_average_pooling2d (Globa (None, 2048)         0           block14_sepconv2_act[0][0]
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 1024)         2098176     global_average_pooling2d[0][0]
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 8)            8200        dense[0][0]
+==================================================================================================
+Total params: 22,967,856
+Trainable params: 22,913,328
+Non-trainable params: 54,528
+__________________________________________________________________________________________________
+Configuration Start -------------------------
+{'name': 'SGD', 'learning_rate': 0.01, 'decay': 1e-06, 'momentum': 0.9, 'nesterov': True}
+Configuration End -------------------------
 Train on 13920 samples, validate on 400 samples
-Epoch 1/50
-2020-06-06 12:47:36.886429: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cublas64_100.dll
-2020-06-06 12:47:38.274585: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudnn64_7.dll
-2020-06-06 12:47:44.984139: W tensorflow/stream_executor/cuda/redzone_allocator.cc:312] Internal: Invoking ptxas not supported on Windows
-Relying on driver to perform ptx compilation. This message will be only logged once.
-2020-06-06 12:47:45.908022: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.46GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:47:45.927262: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.04GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:47:46.155349: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.74GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:47:47.174034: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.74GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:47:47.196860: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.55GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:47:48.420218: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.34GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:47:49.677236: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.28GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-13888/13920 [============================>.] - ETA: 0s - loss: 0.3197 - accuracy: 0.8592 - precision: 0.5429 - recall: 0.2927 - auc: 0.84272020-06-06 12:52:20.123284: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.74GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:52:20.203306: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-2020-06-06 12:52:21.875865: W tensorflow/core/common_runtime/bfc_allocator.cc:239] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.30GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
-13920/13920 [==============================] - 296s 21ms/sample - loss: 0.3196 - accuracy: 0.8593 - precision: 0.5430 - recall: 0.2928 - auc: 0.8428 - val_loss: 0.4051 - val_accuracy: 0.8272 - val_precision: 0.2571 - val_recall: 0.2025 - val_auc: 0.7196
-Epoch 2/50
-13920/13920 [==============================] - 283s 20ms/sample - loss: 0.2736 - accuracy: 0.8784 - precision: 0.6490 - recall: 0.3831 - auc: 0.8884 - val_loss: 0.3602 - val_accuracy: 0.8616 - val_precision: 0.4183 - val_recall: 0.2750 - val_auc: 0.7461
-Epoch 3/50
-13920/13920 [==============================] - 284s 20ms/sample - loss: 0.2636 - accuracy: 0.8828 - precision: 0.6655 - recall: 0.4142 - auc: 0.8977 - val_loss: 0.3627 - val_accuracy: 0.8706 - val_precision: 0.4646 - val_recall: 0.2300 - val_auc: 0.7412
-Epoch 4/50
-13920/13920 [==============================] - 284s 20ms/sample - loss: 0.2578 - accuracy: 0.8860 - precision: 0.6784 - recall: 0.4330 - auc: 0.9030 - val_loss: 0.3608 - val_accuracy: 0.8612 - val_precision: 0.4167 - val_recall: 0.2750 - val_auc: 0.7523
-Epoch 5/50
-13920/13920 [==============================] - 283s 20ms/sample - loss: 0.2541 - accuracy: 0.8877 - precision: 0.6828 - recall: 0.4463 - auc: 0.9061 - val_loss: 0.3534 - val_accuracy: 0.8609 - val_precision: 0.3963 - val_recall: 0.2150 - val_auc: 0.7567
-Epoch 6/50
-13920/13920 [==============================] - 284s 20ms/sample - loss: 0.2497 - accuracy: 0.8905 - precision: 0.6944 - recall: 0.4614 - auc: 0.9099 - val_loss: 0.3526 - val_accuracy: 0.8675 - val_precision: 0.4478 - val_recall: 0.2575 - val_auc: 0.7605
-Epoch 7/50
-13920/13920 [==============================] - 286s 21ms/sample - loss: 0.2468 - accuracy: 0.8920 - precision: 0.7008 - recall: 0.4681 - auc: 0.9122 - val_loss: 0.3419 - val_accuracy: 0.8725 - val_precision: 0.4780 - val_recall: 0.2175 - val_auc: 0.7684
-Epoch 8/50
-13920/13920 [==============================] - 285s 20ms/sample - loss: 0.2447 - accuracy: 0.8928 - precision: 0.7020 - recall: 0.4757 - auc: 0.9140 - val_loss: 0.3359 - val_accuracy: 0.8728 - val_precision: 0.4831 - val_recall: 0.2500 - val_auc: 0.7760
-Epoch 9/50
-13920/13920 [==============================] - 285s 20ms/sample - loss: 0.2427 - accuracy: 0.8934 - precision: 0.7039 - recall: 0.4797 - auc: 0.9156 - val_loss: 0.3378 - val_accuracy: 0.8691 - val_precision: 0.4570 - val_recall: 0.2525 - val_auc: 0.7762
-Epoch 10/50
-13920/13920 [==============================] - 286s 21ms/sample - loss: 0.2409 - accuracy: 0.8939 - precision: 0.7061 - recall: 0.4821 - auc: 0.9170 - val_loss: 0.3238 - val_accuracy: 0.8816 - val_precision: 0.5621 - val_recall: 0.2375 - val_auc: 0.7859
-Epoch 11/50
-13920/13920 [==============================] - 284s 20ms/sample - loss: 0.2396 - accuracy: 0.8948 - precision: 0.7072 - recall: 0.4903 - auc: 0.9180 - val_loss: 0.3189 - val_accuracy: 0.8803 - val_precision: 0.5470 - val_recall: 0.2475 - val_auc: 0.7909
-Epoch 12/50
-13920/13920 [==============================] - 290s 21ms/sample - loss: 0.2377 - accuracy: 0.8962 - precision: 0.7157 - recall: 0.4923 - auc: 0.9194 - val_loss: 0.3302 - val_accuracy: 0.8744 - val_precision: 0.4956 - val_recall: 0.2800 - val_auc: 0.7835
-Epoch 13/50
-13920/13920 [==============================] - 285s 21ms/sample - loss: 0.2362 - accuracy: 0.8969 - precision: 0.7155 - recall: 0.4999 - auc: 0.9206 - val_loss: 0.3531 - val_accuracy: 0.8681 - val_precision: 0.4522 - val_recall: 0.2600 - val_auc: 0.7637
-Epoch 14/50
-13920/13920 [==============================] - 287s 21ms/sample - loss: 0.2353 - accuracy: 0.8968 - precision: 0.7161 - recall: 0.4984 - auc: 0.9214 - val_loss: 0.3423 - val_accuracy: 0.8634 - val_precision: 0.4297 - val_recall: 0.2825 - val_auc: 0.7784
-Epoch 15/50
-13920/13920 [==============================] - 284s 20ms/sample - loss: 0.2333 - accuracy: 0.8982 - precision: 0.7215 - recall: 0.5048 - auc: 0.9228 - val_loss: 0.3434 - val_accuracy: 0.8656 - val_precision: 0.4370 - val_recall: 0.2600 - val_auc: 0.7784
-Epoch 16/50
-13920/13920 [==============================] - 288s 21ms/sample - loss: 0.2320 - accuracy: 0.8988 - precision: 0.7241 - recall: 0.5074 - auc: 0.9240 - val_loss: 0.3285 - val_accuracy: 0.8747 - val_precision: 0.4975 - val_recall: 0.2525 - val_auc: 0.7839
-Epoch 00016: early stopping
-saving
-plotting
-400/1 - 7s - loss: 0.3379 - accuracy: 0.8747 - precision: 0.4975 - recall: 0.2525 - auc: 0.7839
-loss :  0.32848785161972044
-accuracy :  0.8746875
-precision :  0.49753696
-recall :  0.2525
-auc :  0.78385717
+Epoch 1/100
+13920/13920 [==============================] - 18979s 1s/sample - loss: 0.2952 - accuracy: 0.8732 - precision: 0.6646 - recall: 0.2848 - auc: 0.8644 - val_loss: 0.3392 - val_accuracy: 0.8806 - val_precision: 0.5536 - val_recall: 0.2325 - val_auc: 0.7576
+Epoch 2/100
+13920/13920 [==============================] - 9005s 647ms/sample - loss: 0.2138 - accuracy: 0.9081 - precision: 0.7537 - recall: 0.5601 - auc: 0.9365 - val_loss: 0.2999 - val_accuracy: 0.8813 - val_precision: 0.5340 - val_recall: 0.3925 - val_auc: 0.8287
+Epoch 3/100
+13920/13920 [==============================] - 15331s 1s/sample - loss: 0.1758 - accuracy: 0.9256 - precision: 0.8033 - recall: 0.6564 - auc: 0.9586 - val_loss: 0.3153 - val_accuracy: 0.8766 - val_precision: 0.5071 - val_recall: 0.4450 - val_auc: 0.8406
+Epoch 4/100
+13920/13920 [==============================] - 8375s 602ms/sample - loss: 0.1402 - accuracy: 0.9417 - precision: 0.8494 - recall: 0.7352 - auc: 0.9746 - val_loss: 0.3376 - val_accuracy: 0.8797 - val_precision: 0.5198 - val_recall: 0.4925 - val_auc: 0.8420
+Epoch 5/100
+13920/13920 [==============================] - 8496s 610ms/sample - loss: 0.1026 - accuracy: 0.9603 - precision: 0.9019 - recall: 0.8200 - auc: 0.9866 - val_loss: 0.3077 - val_accuracy: 0.8919 - val_precision: 0.5746 - val_recall: 0.5200 - val_auc: 0.8604
+Epoch 6/100
+13920/13920 [==============================] - 9191s 660ms/sample - loss: 0.0688 - accuracy: 0.9739 - precision: 0.9378 - recall: 0.8818 - auc: 0.9944 - val_loss: 0.3686 - val_accuracy: 0.8819 - val_precision: 0.5293 - val_recall: 0.4975 - val_auc: 0.8567
+Epoch 7/100
+13920/13920 [==============================] - 9433s 678ms/sample - loss: 0.0446 - accuracy: 0.9842 - precision: 0.9654 - recall: 0.9260 - auc: 0.9977 - val_loss: 0.4668 - val_accuracy: 0.8750 - val_precision: 0.5000 - val_recall: 0.5075 - val_auc: 0.8319
+Epoch 8/100
+13920/13920 [==============================] - 11866s 852ms/sample - loss: 0.0310 - accuracy: 0.9891 - precision: 0.9771 - recall: 0.9485 - auc: 0.9989 - val_loss: 0.5094 - val_accuracy: 0.8778 - val_precision: 0.5112 - val_recall: 0.5150 - val_auc: 0.8296
+Epoch 9/100
+13920/13920 [==============================] - 9725s 699ms/sample - loss: 0.0245 - accuracy: 0.9917 - precision: 0.9813 - recall: 0.9619 - auc: 0.9993 - val_loss: 0.5168 - val_accuracy: 0.8784 - val_precision: 0.5144 - val_recall: 0.4925 - val_auc: 0.8238
+Epoch 10/100
+13920/13920 [==============================] - 8530s 613ms/sample - loss: 0.0201 - accuracy: 0.9934 - precision: 0.9838 - recall: 0.9713 - auc: 0.9996 - val_loss: 0.4636 - val_accuracy: 0.8875 - val_precision: 0.5532 - val_recall: 0.5200 - val_auc: 0.8396
+Epoch 00010: early stopping
+saving weights
+plotting metrics
+plotting accuracy
+display the content of the model
+400/1 - 41s - loss: 0.4298 - accuracy: 0.8875 - precision: 0.5532 - recall: 0.5200 - auc: 0.8396
+loss :  0.4635940623283386
+accuracy :  0.8875
+precision :  0.5531915
+recall :  0.52
+auc :  0.8395691
 
-Kappa score: 0.2738795835219556
-F-1 score: 0.8746875
-AUC value: 0.7862857142857143
-Final Score: 0.6449509326025565
+plotting confusion matrix
+Kappa score: 0.47214076246334313
+F-1 score: 0.8875
+AUC value: 0.8611830357142858
+Final Score: 0.740274599392543
 ```
 
 ## Plots
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg19_basic/plot1.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg19_basic/plot2.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg19_basic/plot3.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/output/vgg19_basic/plot4.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/11%20-%20xception_basic/plot1.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/11%20-%20xception_basic/plot2.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/11%20-%20xception_basic/plot3.png)
+![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/11%20-%20xception_basic/plot4.png)
 
 ## Ground Truth
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/odir_ground_truth.csv
+https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/11%20-%20xception_basic/odir_ground_truth.csv
 
 ## Output Predictions
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/odir_predictions.csv
+https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/11%20-%20xception_basic/odir_predictions.csv

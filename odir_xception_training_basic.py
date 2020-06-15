@@ -34,7 +34,7 @@ import numpy as np
 batch_size = 32
 num_classes = 8
 epochs = 100
-patience = 5
+patience = 3
 
 # class_weight = {0: 1.,
 #                 1: 1.583802025,
@@ -87,7 +87,7 @@ defined_metrics = [
 #               optimizer='rmsprop',
 #               metrics=defined_metrics)
 
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
 print('Configuration Start -------------------------')
 print(sgd.get_config())
 print('Configuration End -------------------------')

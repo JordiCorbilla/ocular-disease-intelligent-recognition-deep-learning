@@ -34,7 +34,7 @@ import numpy as np
 batch_size = 32
 num_classes = 8
 epochs = 100
-patience = 5
+patience = 3
 freeze_layers = 2
 
 # class_weight = {0: 1.,
@@ -59,10 +59,8 @@ base_model = inception_resnet_v2.InceptionResNetV2
 base_model = base_model(weights='imagenet', include_top=False)
 
 # Comment this out if you want to train all layers
-for layer in base_model.layers:
-    layer.trainable = True
-
-
+# for layer in base_model.layers:
+#     layer.trainable = True
 
 x = base_model.output
 #x = Flatten()(x)

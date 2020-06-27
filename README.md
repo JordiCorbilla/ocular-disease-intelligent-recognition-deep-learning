@@ -369,12 +369,13 @@ python.exe odir_inception_ResNetV2_testing_inference.py
 - [[generated_ground_truth.md]]
 - [[list_discarded_images.md]]
 - [[odir_training_images_pruning.md]]
-- [[gpu_configuration_output.md]]
+- [[configuration.md]]
 - [[readme.md]]
 
 ### License
 
 Creative Commons Attribution-NonCommercial 4.0 International Public License
+
 
 
 

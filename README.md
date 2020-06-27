@@ -85,7 +85,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 ### Dataset
 
-The Dataset is part of the ODIR 2019 Grand Challenge. In order to use the data you need to register and download it from there: https://odir2019.grand-challenge.org/introduction/
+The Dataset is part of the ODIR 2019 Grand Challenge. In order to use the data you need to register and download it from there: <https://odir2019.grand-challenge.org/introduction/>
 
 ### Works on Python 3.6
 
@@ -135,7 +135,7 @@ c:\temp\ODIR-5K_Testing_Images
 
 The training images Dataset should contain 7000 images and the testing Dataset 1000 images. Below is a screenshot of the images in the training dataset folder:
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/dataset.png)
+![dataset](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/dataset.png)
 
 Then, create the following folders:
 
@@ -375,6 +375,7 @@ python.exe odir_inception_ResNetV2_testing_inference.py
 ### License
 
 Creative Commons Attribution-NonCommercial 4.0 International Public License
+
 
 
 

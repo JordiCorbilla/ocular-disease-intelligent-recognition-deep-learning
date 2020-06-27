@@ -16,7 +16,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ## Pathologies
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/pathologies.png)
+![pathologies](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/pathologies.png)
 
 <p align="justify">According to 2010 World Health Organization data: There are more than 39 million blind people where 80% of them could have been prevented! This lack of prevention is especially true in developing countries where cataract is still the highest with 51% globally.</p>
 
@@ -26,7 +26,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ## Deep learning architecture
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)
+![design](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)
 
 **What is our methodology?**
 
@@ -42,7 +42,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 
 ## Training Details
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/trainingdetails.png)
+![training](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/trainingdetails.png)
 
 <p align="justify">After introducing the models and performing hundreds of experiments with them, we can talk about the best experiment found for each model and their configuration.</p>
 
@@ -164,11 +164,11 @@ python odir_testing_image_treatment_job.py
 
 The odir_image_crop_job.py job will treat all the Training Dataset images and remove the black area of the images so the images end up like in the image below (same job for the odir_image_testing_crop_job.py which will act upon the training images):
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/cropped.png)
+![Cropped](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/cropped.png)
 
 The second job will perform the resize and squaring functionality to 224 pixels x 224 pixels. The parameters image_width and keep_aspect_ratio variables can be edited in the python file to test different values/scenarios. This should give you images like the ones below:
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/squareimages.png)
+![squareimages](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/squareimages.png)
 
 #### 2) Data Augmentation (if you don't want to use this step you can skip it)
 
@@ -309,7 +309,7 @@ python.exe odir_resnet50_testing_inference.py
 python.exe odir_inception_ResNetV2_training_basic.py
 ```
 
-- Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/readme.md)
+- Sample output can be seen here: [[readme.md]](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/vgg19_basic/readme.md)
 
 ```cmd
 -- Enhanced Run of the model using Data Augmentation
@@ -361,6 +361,22 @@ python.exe odir_inception_ResNetV2_testing_inference.py
 - Yorston, D. (2003). Retinal Diseases and VISION 2020. Community Eye Health. 2003;16(46):19–20.
 - Zhou, Y., He, X., Huang, L., Liu, L., Zhu, F., Cui, S., Shao, L. (2019). Collaborative Learning of Semi-Supervised Segmentation and Classification for Medical Images. The IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
 
+### Links to Materials
+
+- [[vgg_model_summary.md]]
+- [[generated_ground_truth.md]]
+- [[inception_model_summary.md]]
+- [[generated_ground_truth.md]]
+- [[list_discarded_images.md]]
+- [[odir_training_images_pruning.md]]
+
 ### License
 
 Creative Commons Attribution-NonCommercial 4.0 International Public License
+
+
+
+
+
+
+

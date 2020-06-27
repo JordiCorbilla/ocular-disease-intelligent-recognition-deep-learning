@@ -2,7 +2,7 @@
 
 ## Results after pre-processing the images through my own rule engine
 
-```
+```cmd
 Right fundus not found: [20_right.jpg] as it has been discarded, working with *left* fundus only
 Left and Right fundus not found: [36_left.jpg],[36_right.jpg] as they have been discarded
 Right fundus not found: [39_right.jpg] as it has been discarded, working with *left* fundus only
@@ -428,3 +428,4 @@ Right fundus not found: [4601_right.jpg] as it has been discarded, working with 
 Total discarded images: 449
 Total training images: 6551
 ```
+

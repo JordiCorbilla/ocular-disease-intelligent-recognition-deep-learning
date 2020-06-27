@@ -1,4 +1,4 @@
-## Configuration
+# Configuration
 
 - 'Optimizer': 'SGD'
 - 'learning_rate': 0.01
@@ -8,7 +8,8 @@
 - 'Dropout': False
 
 ## Execution Output
-```
+
+```cmd
 C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification>python odir_inception_v3_training_basic.py
 2020-06-08 09:07:31.846144: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
 2020-06-08 09:08:04.041146: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
@@ -753,13 +754,17 @@ Final Score: 0.7369248756074734
 ```
 
 ## Plots
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot1.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot2.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot3.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot4.png)
+
+![plot1](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot1.png)
+![plot2](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot2.png)
+![plot3](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot3.png)
+![plot4](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/plot4.png)
 
 ## Ground Truth
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/odir_ground_truth.csv
+
+<https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/odir_ground_truth.csv>
 
 ## Output Predictions
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/odir_predictions.csv
+
+<https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/odir_predictions.csv>
+

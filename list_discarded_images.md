@@ -1,4 +1,5 @@
 # List of discarded images
+
 | Fundus         | Discard Reason                        | Fundus         | Discard Reason    |
 |----------------|---------------------------------------|----------------|-------------------|
 | 20_right.jpg   | Lens Dust                             | 2450_left.jpg  | Lens Dust         |
@@ -226,3 +227,4 @@
 | 2448_right.jpg | Lens Dust                             | 4448_left.jpg  | Low Image Quality |
 | 4522_left.jpg  | Low Image Quality                     | 4580_left.jpg  | no fundus image   |
 | 4601_right.jpg | Low Image Quality                     |                |                   |
+

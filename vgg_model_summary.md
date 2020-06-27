@@ -1,6 +1,6 @@
 # VGG-16 Model Summary
 
-```
+```cmd
 Model: "sequential"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
@@ -53,3 +53,4 @@ Total params: 134,293,320
 Trainable params: 32,776
 Non-trainable params: 134,260,544
 ```
+

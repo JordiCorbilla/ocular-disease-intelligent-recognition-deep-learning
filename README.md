@@ -5,14 +5,17 @@
 <br>  The dissertation PDFs and the dissertation sources are licensed under the <b>Creative Commons Attribution</b> license, as described in the LICENSE file.</p>
 
 ## Abstract
+
 <p align="justify">Retinal pathologies are the most common cause of childhood blindness worldwide. Rapid and automatic detection of diseases is critical and urgent in reducing the ophthalmologist's workload. Ophthalmologists diagnose diseases based on pattern recognition through direct or indirect visualization of the eye and its surrounding structures. Dependence on the fundus of the eye and its analysis make the field of ophthalmology perfectly suited to benefit from deep learning algorithms. Each disease has different stages of severity that can be deduced by verifying the existence of specific lesions and each lesion is characterized by certain morphological features where several lesions of different pathologies have similar characteristics. We note that patients may be simultaneously affected by various pathologies, and consequently, the detection of eye diseases has a multi-label classification with a complex resolution principle.</p>
 <p></p>
 <p align="justify">Two deep learning solutions are being studied for the automatic detection of multiple eye diseases. The solutions chosen are due to their higher performance and final score in the ILSVRC challenge: GoogLeNet and VGGNet. First, we study the different characteristics of lesions and define the fundamental steps of data processing. We then identify the software and hardware needed to execute deep learning solutions. Finally, we investigate the principles of experimentation involved in evaluating the various methods, the public database used for the training and validation phases, and report the final detection accuracy with other important metrics.</p>
 
 ## Keywords:
+
 Image classification, Deep learning, Retinography, Convolutional neural networks, Eye diseases, Medical imaging analysis.
 
 ## Pathologies:
+
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/pathologies.png)
 
 <p align="justify">According to 2010 World Health Organization data: There are more than 39 million blind people where 80% of them could have been prevented! This lack of prevention is especially true in developing countries where cataract is still the highest with 51% globally.</p>
@@ -22,6 +25,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 <p align="justify">Rapid and automatic detection of diseases is critical and urgent in reducing the ophthalmologist's workload.</p>
 
 ## Deep learning architecture:
+
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)
 
 **What is our methodology?**
@@ -46,6 +50,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 <p align="justify">As far as the <b>VGG</b> model is concerned, we have noticed that transfer learning does better than training the model as a whole. Therefore, we loaded the weights of ImageNet and modified the last layer to consider the multi-label problem and only enabled the part of the classifier leaving us with only 32 thousand parameters to train. The only difference here with the Inception model is that the learning rate is 0.001 and the rest is configured in the same way.</p>
 
 ## Model Comparison:
+
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/modelcomparison.png)
 
 <p align="justify">The final score of the models shows us a clear winner with 60% accuracy and a 55% of Recall with the Inception model. Giving you a final score of 76% (taking into account the mean value of the sum of the values of the Kappa coefficient of Cohen, F1-Score and AUC).</p>
@@ -53,6 +58,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 For better visual representation, we can use the confusion matrix below.</p>
 
 ## Confusion matrix:
+
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/ConfusionMatrix.png)
 
 <p align="justify">As we can see in these confusion matrices. Inception does a better job of sorting items on the diagonal of the array, indicating the correct classification. If we had a perfect matrix, we would have to see number 50 in each cell on the diagonal. Therefore we have classifications with 80% of successes and others like for example the hypertension named with a 5 where we have only been able to correctly classify 22%. We have more than 50% of correct classifications in each class except hypertension and other pathologies with 22% and 32% respectively. However, despite the increase in data (through data augmentation), there are still features that have not been learned by the model.</p>
@@ -60,6 +66,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 <p align="justify">As for the VGG, we can see how the data is a bit more scattered but we also have different classifications on the diagonal. As for the minority hypertension class, we can also see that there was an issue here as it was unable to classify too many images in this category.</p>
 
 ## Classification Output:
+
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/classificationoutput.png)
 
 <p align="justify">Finally we can see the output that each model generates and where we can visually check the classification result towards its ground truth. With this work, all the code related to the training and validation of the data, as well as the inference check to validate the output of the models, are delivered in this repo.</p>
@@ -67,22 +74,25 @@ For better visual representation, we can use the confusion matrix below.</p>
 <p align="justify">We can see, then, that the two models have the same classification for the same image, but if we analyze in detail the response of each output we can see that it is quite different.</p>
 
 ## Conclusions:
+
 - This project studies two deep learning models for the multiple classification of diseases.
 - There is added complexity due to the multi-label and the initial data imbalance.
 - We have seen that after the fine-tuning of the experiments we are able to obtain 60% accuracy on the validation set.
 - The scenario is set for future applications, where the model could support the ophthalmologist during the capture of the fundus, and thus to classify pathologies faster.
 
-## Implementation Details:
+## Implementation Details
 
-### Dataset:
+### Dataset
+
 The Dataset is part of the ODIR 2019 Grand Challenge. In order to use the data you need to register and download it from there: https://odir2019.grand-challenge.org/introduction/
 
-### Works on Python 3.6:
+### Works on Python 3.6
 
 [tensorflow-2.0](https://github.com/tensorflow/tensorflow) - use branch `master`
 
 The full list of packages used can be seen below:
-```
+
+```python
 - tensorboard-2.0.0
 - tensorflow-2.0.0
 - tensorflow-estimator-2.0.1
@@ -108,6 +118,7 @@ The full list of packages used can be seen below:
 - numpy 1.17.2
 - scipy-1.3.1
 ```
+
 All the training images must be in JPEG format and with 224x224px.
 
 ### Usage

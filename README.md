@@ -52,7 +52,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 
 ## Model Comparison
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/modelcomparison.png)
+![modelcomparison](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/modelcomparison.png)
 
 <p align="justify">The final score of the models shows us a clear winner with 60% accuracy and a 55% of Recall with the Inception model. Giving you a final score of 76% (taking into account the mean value of the sum of the values of the Kappa coefficient of Cohen, F1-Score and AUC).</p>
 <p align="justify">As for the VGG model, it is very close to the result of the Inception but has an accuracy of 57% with a recall of 36%, indicating that 36% of the returned values are correct with respect to the total number of images that are right.
@@ -60,7 +60,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 ## Confusion matrix
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/ConfusionMatrix.png)
+![ConfusionMatrix](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/ConfusionMatrix.png)
 
 <p align="justify">As we can see in these confusion matrices. Inception does a better job of sorting items on the diagonal of the array, indicating the correct classification. If we had a perfect matrix, we would have to see number 50 in each cell on the diagonal. Therefore we have classifications with 80% of successes and others like for example the hypertension named with a 5 where we have only been able to correctly classify 22%. We have more than 50% of correct classifications in each class except hypertension and other pathologies with 22% and 32% respectively. However, despite the increase in data (through data augmentation), there are still features that have not been learned by the model.</p>
 
@@ -68,7 +68,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 ## Classification Output
 
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/classificationoutput.png)
+![classificationoutput](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/classificationoutput.png)
 
 <p align="justify">Finally we can see the output that each model generates and where we can visually check the classification result towards its ground truth. With this work, all the code related to the training and validation of the data, as well as the inference check to validate the output of the models, are delivered in this repo.</p>
 
@@ -375,6 +375,7 @@ python.exe odir_inception_ResNetV2_testing_inference.py
 ### License
 
 Creative Commons Attribution-NonCommercial 4.0 International Public License
+
 
 
 

@@ -1,4 +1,6 @@
-# Configuration
+# Inception V3 Basic
+
+## Configuration
 
 - 'Optimizer': 'SGD'
 - 'learning_rate': 0.01
@@ -767,4 +769,5 @@ Final Score: 0.7369248756074734
 ## Output Predictions
 
 <https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/01%20-%20inception_v3_basic/odir_predictions.csv>
+
 

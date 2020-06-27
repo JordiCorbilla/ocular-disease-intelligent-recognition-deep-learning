@@ -9,3 +9,4 @@
 |  **VGG 16** | 0.3137   | 0.8871    | 0.5776    | 0.3625     | 0.8140    | 0.3863    | 0.8871    | 0.8176    | 0.6970    | [v0.1](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/releases/tag/v0.1)    |
 |  **VGG 19** | 0.3284   | 0.8746    | 0.4975    | 0.2525     | 0.7838    | 0.2738    | 0.8746    | 0.7862    | 0.6449    | [v0.5](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/releases/tag/v0.5)    |
 
+

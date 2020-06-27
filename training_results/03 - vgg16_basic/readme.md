@@ -1,3 +1,5 @@
+# VGG16 Basic
+
 ## Configuration
 
 - 'Optimizer': 'SGD'
@@ -8,7 +10,8 @@
 - 'Dropout': False
 
 ## Execution Output
-```
+
+```cmd
 C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification>python odir_vgg_training_basic.py
 2020-05-18 08:14:36.648073: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
 2020-05-18 08:15:12.406893: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
@@ -139,12 +142,18 @@ Final Score: 0.6558950879546809
 ```
 
 ## Plots
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot1.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot2.png)
-![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot3.png)
+
+![plot1](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot1.png)
+![plot2](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot2.png)
+![plot3](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/training_results/03%20-%20vgg16_basic/plot3.png)
 
 ## Ground Truth
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/03%20-%20vgg16_basic/odir_ground_truth.csv
+
+<https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/03%20-%20vgg16_basic/odir_ground_truth.csv>
 
 ## Output Predictions
-https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/03%20-%20vgg16_basic/odir_predictions.csv
+
+<https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/training_results/03%20-%20vgg16_basic/odir_predictions.csv>
+
+
+

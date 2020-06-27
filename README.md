@@ -1,7 +1,7 @@
 # Ocular Disease Intelligent Recognition Through Deep Learning Architectures
 
 <p align="justify">This repository contains Jordi Corbilla's Msc dissertation: <br>
-  - <b>Ocular Disease Intelligent recognition through deep learning architectures</b>, published by Universitat Oberta de Catalunya in 2020 [http://openaccess.uoc.edu/webapps/o2/handle/10609/113126]. 
+  - <b>Ocular Disease Intelligent recognition through deep learning architectures</b>, published by Universitat Oberta de Catalunya in 2020 [http://openaccess.uoc.edu/webapps/o2/handle/10609/113126].
 <br>  The dissertation PDFs and the dissertation sources are licensed under the <b>Creative Commons Attribution</b> license, as described in the LICENSE file.</p>
 
 ## Abstract
@@ -10,11 +10,11 @@
 <p></p>
 <p align="justify">Two deep learning solutions are being studied for the automatic detection of multiple eye diseases. The solutions chosen are due to their higher performance and final score in the ILSVRC challenge: GoogLeNet and VGGNet. First, we study the different characteristics of lesions and define the fundamental steps of data processing. We then identify the software and hardware needed to execute deep learning solutions. Finally, we investigate the principles of experimentation involved in evaluating the various methods, the public database used for the training and validation phases, and report the final detection accuracy with other important metrics.</p>
 
-## Keywords:
+## Keywords
 
 Image classification, Deep learning, Retinography, Convolutional neural networks, Eye diseases, Medical imaging analysis.
 
-## Pathologies:
+## Pathologies
 
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/pathologies.png)
 
@@ -24,7 +24,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 <p align="justify">Rapid and automatic detection of diseases is critical and urgent in reducing the ophthalmologist's workload.</p>
 
-## Deep learning architecture:
+## Deep learning architecture
 
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)
 
@@ -40,7 +40,8 @@ A data augmentation module is also added to offset the imbalance found in the da
 
 <p align="justify">Finally, the different results from the experiments are generated and compared. This is the flowchart we created and describes in detail the different parts that make up this work.</p>
 
-## Training Details:
+## Training Details
+
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/trainingdetails.png)
 
 <p align="justify">After introducing the models and performing hundreds of experiments with them, we can talk about the best experiment found for each model and their configuration.</p>
@@ -49,7 +50,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 
 <p align="justify">As far as the <b>VGG</b> model is concerned, we have noticed that transfer learning does better than training the model as a whole. Therefore, we loaded the weights of ImageNet and modified the last layer to consider the multi-label problem and only enabled the part of the classifier leaving us with only 32 thousand parameters to train. The only difference here with the Inception model is that the learning rate is 0.001 and the rest is configured in the same way.</p>
 
-## Model Comparison:
+## Model Comparison
 
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/modelcomparison.png)
 
@@ -57,7 +58,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 <p align="justify">As for the VGG model, it is very close to the result of the Inception but has an accuracy of 57% with a recall of 36%, indicating that 36% of the returned values are correct with respect to the total number of images that are right.
 For better visual representation, we can use the confusion matrix below.</p>
 
-## Confusion matrix:
+## Confusion matrix
 
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/ConfusionMatrix.png)
 
@@ -65,7 +66,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 <p align="justify">As for the VGG, we can see how the data is a bit more scattered but we also have different classifications on the diagonal. As for the minority hypertension class, we can also see that there was an issue here as it was unable to classify too many images in this category.</p>
 
-## Classification Output:
+## Classification Output
 
 ![](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/classificationoutput.png)
 
@@ -73,7 +74,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 <p align="justify">We can see, then, that the two models have the same classification for the same image, but if we analyze in detail the response of each output we can see that it is quite different.</p>
 
-## Conclusions:
+## Conclusions
 
 - This project studies two deep learning models for the multiple classification of diseases.
 - There is added complexity due to the multi-label and the initial data imbalance.

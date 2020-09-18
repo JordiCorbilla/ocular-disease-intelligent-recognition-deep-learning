@@ -16,7 +16,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ## Pathologies
 
-![pathologies](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/pathologies.png)
+![pathologies](images/pathologies.png)
 
 <p align="justify">According to 2010 World Health Organization data: There are more than 39 million blind people where 80% of them could have been prevented! This lack of prevention is especially true in developing countries where cataract is still the highest with 51% globally.</p>
 
@@ -26,7 +26,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ## Deep learning architecture
 
-![design](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/deeplearningdesign.png)
+![design](images/deeplearningdesign.png)
 
 **What is our methodology?**
 
@@ -42,7 +42,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 
 ## Training Details
 
-![training](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/trainingdetails.png)
+![training](images/trainingdetails.png)
 
 <p align="justify">After introducing the models and performing hundreds of experiments with them, we can talk about the best experiment found for each model and their configuration.</p>
 
@@ -52,7 +52,7 @@ A data augmentation module is also added to offset the imbalance found in the da
 
 ## Model Comparison
 
-![modelcomparison](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/modelcomparison.png)
+![modelcomparison](images/modelcomparison.png)
 
 <p align="justify">The final score of the models shows us a clear winner with 60% accuracy and a 55% of Recall with the Inception model. Giving you a final score of 76% (taking into account the mean value of the sum of the values of the Kappa coefficient of Cohen, F1-Score and AUC).</p>
 <p align="justify">As for the VGG model, it is very close to the result of the Inception but has an accuracy of 57% with a recall of 36%, indicating that 36% of the returned values are correct with respect to the total number of images that are right.
@@ -60,7 +60,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 ## Confusion matrix
 
-![ConfusionMatrix](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/ConfusionMatrix.png)
+![ConfusionMatrix](images/ConfusionMatrix.png)
 
 <p align="justify">As we can see in these confusion matrices. Inception does a better job of sorting items on the diagonal of the array, indicating the correct classification. If we had a perfect matrix, we would have to see number 50 in each cell on the diagonal. Therefore we have classifications with 80% of successes and others like for example the hypertension named with a 5 where we have only been able to correctly classify 22%. We have more than 50% of correct classifications in each class except hypertension and other pathologies with 22% and 32% respectively. However, despite the increase in data (through data augmentation), there are still features that have not been learned by the model.</p>
 
@@ -68,7 +68,7 @@ For better visual representation, we can use the confusion matrix below.</p>
 
 ## Classification Output
 
-![classificationoutput](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/classificationoutput.png)
+![classificationoutput](images/classificationoutput.png)
 
 <p align="justify">Finally we can see the output that each model generates and where we can visually check the classification result towards its ground truth. With this work, all the code related to the training and validation of the data, as well as the inference check to validate the output of the models, are delivered in this repo.</p>
 
@@ -135,7 +135,7 @@ c:\temp\ODIR-5K_Testing_Images
 
 The training images Dataset should contain 7000 images and the testing Dataset 1000 images. Below is a screenshot of the images in the training dataset folder:
 
-![dataset](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/dataset.png)
+![dataset](images/dataset.png)
 
 Then, create the following folders:
 
@@ -164,11 +164,11 @@ python odir_testing_image_treatment_job.py
 
 The odir_image_crop_job.py job will treat all the Training Dataset images and remove the black area of the images so the images end up like in the image below (same job for the odir_image_testing_crop_job.py which will act upon the training images):
 
-![Cropped](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/cropped.png)
+![Cropped](images/cropped.png)
 
 The second job will perform the resize and squaring functionality to 224 pixels x 224 pixels. The parameters image_width and keep_aspect_ratio variables can be edited in the python file to test different values/scenarios. This should give you images like the ones below:
 
-![squareimages](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/raw/master/images/squareimages.png)
+![squareimages](images/squareimages.png)
 
 #### 2) Data Augmentation (if you don't want to use this step you can skip it)
 
@@ -374,11 +374,4 @@ python.exe odir_inception_ResNetV2_testing_inference.py
 
 ### License
 
-Creative Commons Attribution-NonCommercial 4.0 International Public License
-
-
-
-
-
-
-
+Creative Commons Attribution-NonCommercial 4.0 International Public License.

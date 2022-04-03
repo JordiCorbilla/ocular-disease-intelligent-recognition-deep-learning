@@ -214,7 +214,7 @@ training_file = r'ground_truth\testing_default_value.csv'
 
 ```cmd
 -- Basic Run of the model
-python.exe odir_inception_training_basic.py
+python.exe odir_inception_v3_training_basic.py
 ```
 
 Sample output can be seen here: [readme.md](https://github.com/JordiCorbilla/ocular-disease-intelligent-recognition-deep-learning/blob/master/output/inception_basic/readme.md)

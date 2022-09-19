@@ -375,3 +375,8 @@ python.exe odir_inception_ResNetV2_testing_inference.py
 ### License
 
 Creative Commons Attribution-NonCommercial 4.0 International Public License.
+
+## Sponsors
+No sponsors yet! Will you be the first?
+
+[![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/paypalme/jordicorbilla)

@@ -17,7 +17,7 @@ import tensorflow as tf
 from tensorflow.keras.applications import inception_v3
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow.keras.models import Model
-from tensorflow.python.keras.optimizers import SGD
+from tensorflow.python.keras.optimizer_v1 import SGD
 
 os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
 import secrets
@@ -45,7 +45,7 @@ patience = 5
 #                 7: 2.505338078}
 
 token = secrets.token_hex(16)
-folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\test_run'
+folder = r'test_run'
 
 new_folder = os.path.join(folder, token)
 
@@ -92,7 +92,7 @@ print(sgd.get_config())
 print('Configuration End -------------------------')
 model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=defined_metrics)
 
-(x_train, y_train), (x_test, y_test) = odir.load_data(224)
+(x_train, y_train), (x_test, y_test) = odir.load_data(128)
 
 x_test_drawing = x_test
 

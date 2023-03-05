@@ -58,9 +58,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ![ConfusionMatrix](images/ConfusionMatrix.png)
 
-<p align="justify">As we can see in these confusion matrices. Inception does a better job of sorting items on the diagonal of the array, indicating the correct classification. If we had a perfect matrix, we would have to see number 50 in each cell on the diagonal. Therefore we have classifications with 80% of successes and others like for example the hypertension named with a 5 where we have only been able to correctly classify 22%. We have more than 50% of correct classifications in each class except hypertension and other pathologies with 22% and 32% respectively. However, despite the increase in data (through data augmentation), there are still features that have not been learned by the model.</p>
-
-<p align="justify">As for the VGG, we can see how the data is a bit more scattered but we also have different classifications on the diagonal. As for the minority hypertension class, we can also see that there was an issue here as it was unable to classify too many images in this category.</p>
+<p align="justify">The confusion matrices reveal interesting insights about the performance of the models. The Inception model outperforms the VGG model in correctly classifying images, as indicated by a higher number of values on the diagonal. However, there are still some classes, such as hypertension, where both models struggle to correctly classify images. The Inception model achieves an overall accuracy of 80%, with the exception of hypertension and other pathologies, where its performance drops to 22% and 32% respectively. This indicates that despite using data augmentation, there are still features that the model has not learned. On the other hand, the VGG model achieves an accuracy of 57%, with similar issues in correctly classifying hypertension images. Overall, both models show promise in recognizing ocular diseases, but further improvements are needed to address the misclassifications in certain classes.</p>
 
 ## Classification Output
 

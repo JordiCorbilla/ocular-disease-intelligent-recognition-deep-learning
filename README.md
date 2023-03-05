@@ -30,15 +30,11 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 **What is our methodology?**
 
-The dataset is first studied and its decomposition is placed correctly into different pathologies.
+<p align="justify">Our methodology consists of several steps that enable us to accurately classify medical images into different pathologies. First, we carefully analyze the dataset to ensure that each pathology is correctly represented. Next, we develop algorithms for processing the images, which are then fed into deep learning networks capable of handling them. To address imbalances in the data, we include a data augmentation module that adds variability to the images.</p>
 
-<p align="justify">The images are then thoroughly analyzed and algorithms are generated for processing, which each network is capable of accepting. Here we get the ground truth and the final set of images to use.</p>
+<p align="justify">Using these data vectors, we train multiple deep learning models through a series of experiments, each aimed at improving classification accuracy. We adjust the size of the images and conversion blocks to optimize performance, while convolutional layers extract relevant image features and reduce dimensionality. The final decision-making step is handled by a Sigmoid layer.</p>
 
-A data augmentation module is also added to offset the imbalance found in the data set.
-
-<p align="justify">We generates data vectors that each model can consume and deep learning networks are trained through different experiments to provide image classification into 8 groups. The size of images and conversion blocks may vary in different applications. Convolutional layers try to extract relevant image features while reducing their dimensionality. The Sigmoid layer is responsible for the decision-making aspect of the network.</p>
-
-<p align="justify">Finally, the different results from the experiments are generated and compared. This is the flowchart we created and describes in detail the different parts that make up this work.</p>
+<p align="justify">In the end, we generate and compare results from each experiment to determine the best-performing model. To illustrate our methodology, we have created a flowchart that details each stage of the process.</p>
 
 ## Training Details
 

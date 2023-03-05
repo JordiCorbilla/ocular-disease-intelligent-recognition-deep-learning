@@ -64,16 +64,13 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ![classificationoutput](images/classificationoutput.png)
 
-<p align="justify">Finally we can see the output that each model generates and where we can visually check the classification result towards its ground truth. With this work, all the code related to the training and validation of the data, as well as the inference check to validate the output of the models, are delivered in this repo.</p>
+<p align="justify">The final section of the report presents the output of each model and provides some conclusions. The code for training, validation, and inference is included in this repository, allowing for reproducibility and further exploration.</p>
 
-<p align="justify">We can see, then, that the two models have the same classification for the same image, but if we analyze in detail the response of each output we can see that it is quite different.</p>
+<p align="justify">Upon examining the model output, we can see that both models produce the same classification for each image. However, upon closer inspection, we can see that the response of each model's output differs significantly.</p>
 
 ## Conclusions
 
-- This project studies two deep learning models for the multiple classification of diseases.
-- There is added complexity due to the multi-label and the initial data imbalance.
-- We have seen that after the fine-tuning of the experiments we are able to obtain 60% accuracy on the validation set.
-- The scenario is set for future applications, where the model could support the ophthalmologist during the capture of the fundus, and thus to classify pathologies faster.
+In conclusion, this project explores the use of two deep learning models for the classification of ocular diseases, addressing the challenges posed by multi-label classification and data imbalance. The experiments have shown that the models can achieve an accuracy of 60% on the validation set after fine-tuning. The results suggest that these models could be applied in practice to assist ophthalmologists in classifying fundus images more efficiently.
 
 ## Implementation Details
 

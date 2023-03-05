@@ -18,11 +18,11 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ![pathologies](images/pathologies.png)
 
-<p align="justify">According to 2010 World Health Organization data: There are more than 39 million blind people where 80% of them could have been prevented! This lack of prevention is especially true in developing countries where cataract is still the highest with 51% globally.</p>
+<p align="justify">According to 2010 World Health Organization data: The prevalence of preventable blindness is staggering, with over 39 million people affected globally, 80% of whom could have been prevented. In developing countries, cataracts remain the leading cause of blindness, accounting for 51% of cases worldwide.</p>
 
-<p align="justify">The current standard for the classification of diseases based on fundus photography, includes a manual estimation of injury locations  and an analysis of their severity, which requires a lot of time by the ophthalmologist, also incurring high costs in the healthcare system. Therefore, it would be important to have automated methods for performing the analysis.</p>
+<p align="justify">Currently, the standard method for classifying diseases based on fundus photography involves manual estimation of injury locations and analysis of their severity, which is time-consuming and costly for ophthalmologists and healthcare systems. Therefore, there is a pressing need for automated methods to streamline this process.</p>
 
-<p align="justify">Rapid and automatic detection of diseases is critical and urgent in reducing the ophthalmologist's workload.</p>
+<p align="justify">Rapid and accurate disease detection is crucial for reducing the workload of ophthalmologists and ensuring timely treatment for patients.</p>
 
 ## Deep learning architecture
 

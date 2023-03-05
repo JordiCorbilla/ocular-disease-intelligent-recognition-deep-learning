@@ -1,8 +1,8 @@
 # Ocular Disease Intelligent Recognition Through Deep Learning Architectures
 
-<p align="justify">This repository contains Jordi Corbilla's Msc dissertation: <br>
-  - <b>Ocular Disease Intelligent recognition through deep learning architectures</b>, published by Universitat Oberta de Catalunya in 2020 [http://openaccess.uoc.edu/webapps/o2/handle/10609/113126].
-<br>  The dissertation PDFs and the dissertation sources are licensed under the <b>Creative Commons Attribution</b> license, as described in the LICENSE file.</p>
+Welcome to the repository for Jordi Corbilla's MSc dissertation, titled **"Ocular Disease Intelligent Recognition Through Deep Learning Architectures."** The dissertation was published by Universitat Oberta de Catalunya in 2020 and can be accessed through this link: [http://openaccess.uoc.edu/webapps/o2/handle/10609/113126].
+
+The PDFs and sources for the dissertation are licensed under the Creative Commons Attribution license, which is detailed in the LICENSE file. We hope you find the dissertation and associated materials helpful in your own research and learning endeavors.
 
 ## Abstract
 

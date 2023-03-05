@@ -50,9 +50,9 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ![modelcomparison](images/modelcomparison.png)
 
-<p align="justify">The final score of the models shows us a clear winner with 60% accuracy and a 55% of Recall with the Inception model. Giving you a final score of 76% (taking into account the mean value of the sum of the values of the Kappa coefficient of Cohen, F1-Score and AUC).</p>
-<p align="justify">As for the VGG model, it is very close to the result of the Inception but has an accuracy of 57% with a recall of 36%, indicating that 36% of the returned values are correct with respect to the total number of images that are right.
-For better visual representation, we can use the confusion matrix below.</p>
+<p align="justify">The evaluation of the models reveals that the Inception model outperforms the VGG model, achieving an accuracy of 60% and a recall of 55%. The final score, taking into account the mean value of the Kappa coefficient of Cohen, F1-Score, and AUC, is 76%.</p>
+
+<p align="justify">While the VGG model's performance is still impressive, with an accuracy of 57%, its recall is lower at 36%. This means that only 36% of the model's predictions are correct compared to the total number of images that are actually positive. For a more detailed analysis, we have provided a confusion matrix below.</p>
 
 ## Confusion matrix
 

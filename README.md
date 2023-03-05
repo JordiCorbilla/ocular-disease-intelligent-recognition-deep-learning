@@ -70,7 +70,7 @@ Image classification, Deep learning, Retinography, Convolutional neural networks
 
 ## Conclusions
 
-In conclusion, this project explores the use of two deep learning models for the classification of ocular diseases, addressing the challenges posed by multi-label classification and data imbalance. The experiments have shown that the models can achieve an accuracy of 60% on the validation set after fine-tuning. The results suggest that these models could be applied in practice to assist ophthalmologists in classifying fundus images more efficiently.
+<p align="justify">In conclusion, this project explores the use of two deep learning models for the classification of ocular diseases, addressing the challenges posed by multi-label classification and data imbalance. The experiments have shown that the models can achieve an accuracy of 60% on the validation set after fine-tuning. The results suggest that these models could be applied in practice to assist ophthalmologists in classifying fundus images more efficiently.</p>
 
 ## Implementation Details
 

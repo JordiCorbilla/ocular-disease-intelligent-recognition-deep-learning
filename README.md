@@ -371,3 +371,7 @@ Creative Commons Attribution-NonCommercial 4.0 International Public License.
 No sponsors yet! Will you be the first?
 
 [![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/paypalme/jordicorbilla)
+
+### Support me
+
+<a href="https://www.buymeacoffee.com/jordicorbilla" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
